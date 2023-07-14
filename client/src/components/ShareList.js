@@ -1,9 +1,15 @@
 import React from "react";
+import ShareItem from "./ShareItem";
 
-const ShareList = () => {
+const ShareList = ({ shares }) => {
   return (
-    <h3>This is ShareList</h3>
-  )
-}
+    <div>
+      <h3>This is ShareList</h3>
+      {shares.map((share, index) => (
+        <ShareItem key={index} share={share} />
+      ))}
+    </div>
+  );
+};
 
-export default ShareList
+export default ShareList;
