@@ -108,6 +108,27 @@ const FilledNavLink = styled(NavLink)`
   }
 `;
 
+const OpenButton = styled.span`
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    color: darkgrey;
+  }
+`;
+
+const CloseButton = styled.span`
+  font-size: 36px;
+  color: black;
+  cursor: pointer;
+  margin-left: 50px;
+
+  &:hover {
+    color: darkgrey;
+  }
+`;
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -128,12 +149,28 @@ const Navbar = () => {
     };
   }, []);
 
+  const openNav = () => {
+    setIsOpen(true);
+  };
+
+  const closeNav = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Nav>
       {showButton && (
-        <button onClick={toggleMenu}>
-          {isOpen ? "Close Menu" : "Open Menu"}
-        </button>
+        <>
+          {isOpen ? (
+            <CloseButton className="closebtn" onClick={closeNav}>
+              &times;
+            </CloseButton>
+          ) : (
+            <OpenButton className="openbtn" onClick={openNav}>
+              &#9776; open
+            </OpenButton>
+          )}
+        </>
       )}
       <NavMenu isOpen={isOpen}>
         <NavMenuItem>
@@ -151,4 +188,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
