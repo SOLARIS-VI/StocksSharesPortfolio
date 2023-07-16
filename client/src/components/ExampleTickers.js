@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ExampleTickers = () => (
+const tickers = 
 
 [
     {
@@ -62822,6 +62822,10 @@ const ExampleTickers = () => (
       "url": "/market-activity/stocks/zyxi"
     }
   ]
-  )
+  
+  const ExampleTickers = tickers.map((stock) => {
+    return {"symbol": stock.symbol, "name": stock.name }
+  })
+  
 
   export default ExampleTickers
