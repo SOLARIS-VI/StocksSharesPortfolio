@@ -15,10 +15,10 @@ const ContentContainer = styled.div`
   flex: 1;
   padding: 10px;
   margin-left: 160px;
-`;
 
-const Title = styled.h1`
-  color: #000;
+  @media (max-width: 500px) {
+    margin-left: 0;
+  }
 `;
 
 function App() {
