@@ -9,7 +9,11 @@ const finnhubClient = new finnhub.DefaultApi()
 //     console.log(data)
 // });
 
-//Company News
+// finnhubClient.stockSymbols("US", (error, data, response) => {
+//     console.log(data)
+//   });
+
+// Company News
 // finnhubClient.companyNews("AAPL", "2020-01-01", "2020-05-01", (error, data, response) => {
 //     if (error) {
 //         console.error(error);
@@ -105,7 +109,7 @@ const finnhubClient = new finnhub.DefaultApi()
 //     console.log(data)
 // });
 
-// //Crypto symbols
+//Crypto symbols
 // finnhubClient.cryptoSymbols("BINANCE", (error, data, response) => {
 //     console.log(data)
 // });
@@ -215,10 +219,10 @@ const finnhubClient = new finnhub.DefaultApi()
 //     console.log(data)
 // });
 
-// Stock symbols
-finnhubClient.stockSymbols("US", (error, data, response) => {
-    console.log(data)
-  });
+// // Stock symbols
+// finnhubClient.stockSymbols("US", (error, data, response) => {
+//     console.log(data)
+// });
 
 // // Support resistance
 // finnhubClient.supportResistance("AAPL", "D", (error, data, response) => {
@@ -310,10 +314,10 @@ finnhubClient.stockSymbols("US", (error, data, response) => {
 //     console.log(data);
 // });
 
-// // Social Sentiment
-// finnhubClient.socialSentiment('GME', (error, data, response) => {
-//     console.log(data);
-// });
+// Social Sentiment
+finnhubClient.socialSentiment('GME', (error, data, response) => {
+    console.log(data);
+});
 
 // // Investment Theme
 // finnhubClient.investmentThemes('financialExchangesData', (error, data, response) => {
