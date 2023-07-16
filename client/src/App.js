@@ -1,31 +1,40 @@
 import React from "react";
 import api_auth from "./components/api_auth";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
+import Navbar from "./components/Navbar";
 import ShareList from "./components/ShareList";
+import PortfolioList from "./components/PortfolioList";
 
+const AppContainer = styled.div`
+  display: flex;
+`;
+
+const ContentContainer = styled.div`
+  flex: 1;
+  padding: 10px;
+  margin-left: 160px;
+`;
+
+const Title = styled.h1`
+  color: #000;
+`;
 
 function App() {
-
-
-  // const api_key = finnhub.ApiClient.instance.authentications["api_key"];
-  // api_key.apiKey = api_auth 
-  // const finnhubClient = new finnhub.DefaultApi();
-  
-  // finnhubClient.stockSymbols("US", (error, data, response) => {
-  //   response.status(200)
-  //   .then(response => response.json());
-  //   console.log(data);
-  // });
-
-  console.log(api_auth)
+  console.log(api_auth);
 
   return (
-
-    
-    <>
-      <h1>This is App</h1>
-      <ShareList />
-    </>
+    <Router>
+      <Navbar />
+      <AppContainer>
+        <ContentContainer>
+          <Routes>
+            <Route path="/" element={<ShareList />} />
+            <Route path="/portfolio" element={<PortfolioList/>} />
+          </Routes>
+        </ContentContainer>
+      </AppContainer>
+    </Router>
   );
 }
 
