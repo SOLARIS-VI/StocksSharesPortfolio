@@ -315,9 +315,9 @@ finnhubClient.stockCandles("AAPL", "D", 1688860800, 16894655600, (error, data, r
 // });
 
 // Social Sentiment
-finnhubClient.socialSentiment('GME', (error, data, response) => {
-    console.log(data);
-});
+// finnhubClient.socialSentiment('GME', (error, data, response) => {
+//     console.log(data);
+// });
 
 // // Investment Theme
 // finnhubClient.investmentThemes('financialExchangesData', (error, data, response) => {
