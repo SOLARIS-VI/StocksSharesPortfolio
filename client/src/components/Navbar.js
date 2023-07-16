@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -9,6 +9,12 @@ const Nav = styled.nav`
   padding: 10px;
   height: 100vh;
   position: fixed;
+
+  @media (max-width: 500px) {
+    position: static;
+    height: auto;
+    background-color: transparent;
+  }
 `;
 
 const NavMenu = styled.ul`
@@ -16,6 +22,14 @@ const NavMenu = styled.ul`
   flex-direction: column;
   align-items: center;
   list-style-type: none;
+
+  @media (max-width: 500px) {
+    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    padding: 10px;
+  }
 `;
 
 const NavMenuItem = styled.li`
@@ -25,6 +39,10 @@ const NavMenuItem = styled.li`
   justify-content: center;
   width: 100%;
   margin-top: 10px;
+
+  @media (max-width: 500px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -34,6 +52,11 @@ const NavLink = styled(Link)`
 
   &:hover {
     color: #555;
+  }
+
+  @media (max-width: 500px) {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 `;
 
@@ -85,11 +108,34 @@ const FilledNavLink = styled(NavLink)`
   }
 `;
 
-
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowButton(window.innerWidth <= 500);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Nav>
-      <NavMenu>
+      {showButton && (
+        <button onClick={toggleMenu}>
+          {isOpen ? "Close Menu" : "Open Menu"}
+        </button>
+      )}
+      <NavMenu isOpen={isOpen}>
         <NavMenuItem>
           <StyledNavLink to="/">Home</StyledNavLink>
         </NavMenuItem>
@@ -105,3 +151,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
