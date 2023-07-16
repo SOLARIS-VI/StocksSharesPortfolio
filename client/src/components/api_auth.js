@@ -5,9 +5,9 @@ api_auth.apiKey = "cioj89hr01qhd71btpi0cioj89hr01qhd71btpig"
 const finnhubClient = new finnhub.DefaultApi()
 
 // Stock candles
-// finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, (error, data, response) => {
-//     console.log(data)
-// });
+finnhubClient.stockCandles("AAPL", "D", 1688860800, 16894655600, (error, data, response) => {
+    console.log(data)
+});
 
 // finnhubClient.stockSymbols("US", (error, data, response) => {
 //     console.log(data)
