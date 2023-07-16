@@ -5,9 +5,9 @@ api_auth.apiKey = "cioj89hr01qhd71btpi0cioj89hr01qhd71btpig"
 const finnhubClient = new finnhub.DefaultApi()
 
 // Stock candles
-finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, (error, data, response) => {
-    console.log(data)
-});
+// finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, (error, data, response) => {
+//     console.log(data)
+// });
 
 //Company News
 // finnhubClient.companyNews("AAPL", "2020-01-01", "2020-05-01", (error, data, response) => {
@@ -195,7 +195,7 @@ finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, (error, data, re
 //     console.log(data)
 // });
 
-// //Quote
+//Quote
 // finnhubClient.quote("AAPL", (error, data, response) => {
 //     console.log(data)
 // });
@@ -215,10 +215,10 @@ finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, (error, data, re
 //     console.log(data)
 // });
 
-// // Stock symbols
-// finnhubClient.stockSymbols("US", (error, data, response) => {
-//     console.log(data)
-// });
+// Stock symbols
+finnhubClient.stockSymbols("US", (error, data, response) => {
+    console.log(data)
+  });
 
 // // Support resistance
 // finnhubClient.supportResistance("AAPL", "D", (error, data, response) => {
