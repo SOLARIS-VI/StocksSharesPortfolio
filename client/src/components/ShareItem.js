@@ -1,4 +1,3 @@
-// ShareItem.js
 import React from "react";
 
 const ShareItem = ({ share }) => {
