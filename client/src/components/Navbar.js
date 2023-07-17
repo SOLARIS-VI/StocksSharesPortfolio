@@ -24,7 +24,7 @@ const NavMenu = styled.ul`
   list-style-type: none;
 
   @media (max-width: 500px) {
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    display: ${({ $isopen }) => ($isopen ? "flex" : "none")};
     flex-direction: column;
     align-items: center;
     background-color: grey;
@@ -38,7 +38,6 @@ const NavMenuItem = styled.li`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 10px;
 
   @media (max-width: 500px) {
     margin-bottom: 20px;
@@ -48,14 +47,14 @@ const NavMenuItem = styled.li`
 const NavLink = styled(Link)`
   color: white;
   text-decoration: none;
-  margin-right: 35px;
+  margin-inline-end: 35px;
 
   &:hover {
     color: #555;
   }
 
   @media (max-width: 500px) {
-    margin-right: 0;
+    margin-inline-end: 0;
     margin-bottom: 10px;
   }
 `;
@@ -122,7 +121,7 @@ const CloseButton = styled.span`
   font-size: 36px;
   color: black;
   cursor: pointer;
-  margin-left: 50px;
+  margin-inline-start: 50px;
 
   &:hover {
     color: darkgrey;
@@ -130,12 +129,8 @@ const CloseButton = styled.span`
 `;
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isopen, setIsOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -161,7 +156,7 @@ const Navbar = () => {
     <Nav>
       {showButton && (
         <>
-          {isOpen ? (
+          {isopen ? (
             <CloseButton className="closebtn" onClick={closeNav}>
               &times;
             </CloseButton>
@@ -172,7 +167,7 @@ const Navbar = () => {
           )}
         </>
       )}
-      <NavMenu isOpen={isOpen}>
+      <NavMenu $isopen={isopen}>
         <NavMenuItem>
           <StyledNavLink to="/">Home</StyledNavLink>
         </NavMenuItem>
