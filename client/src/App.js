@@ -28,7 +28,9 @@ function App() {
   const [symbol, setSymbol] = useState("APPL");
   const [stocks, setStocks] = useState([]);
   const [fullStocks, setFullStocks] = useState([]);
+  const [portfolio, setPortfolio] = useState([]);
   const [candles, setCandles] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:9000/api/shares")
       .then((res) => res.json())
@@ -40,6 +42,7 @@ function App() {
         console.error("Error fetching stocks:", error);
       });
   }, []);
+
   useEffect(() => {
     ShareService.getStocks()
       .then((data) => {
@@ -50,11 +53,24 @@ function App() {
         console.error("Error fetching stocks:", error);
       });
   }, []);
+
+  useEffect(() => {
+    ShareService.getPortfolioStocks()
+      .then((data) => {
+        console.log(data);
+        setPortfolio(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching portfolio:", error);
+      });
+  }, []);
+
   const handleGetCandles = () => {
     const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
     setCandles(newCandles);
-    console.log(candles)
-  }
+    console.log(candles);
+  };
+
   return (
     <Router>
       <Navbar />
@@ -64,12 +80,25 @@ function App() {
             <Route
               path="/sharedetails/:id"
               element={
-                <ShareDetails setTimeFrom={setTimeFrom} timeNow={timeNow} handleGetCandles={handleGetCandles} />
+                <ShareDetails
+                  setTimeFrom={setTimeFrom}
+                  timeNow={timeNow}
+                  handleGetCandles={handleGetCandles}
+                />
               }
             />
             <Route path="/" element={<ShareList stocks={stocks} />} />
-            <Route path="/portfolio" element={<PortfolioList />} />
-            <Route path="/fullList" element={<FullList fullStocks={fullStocks} stocks={stocks} setStocks={setStocks} />} />
+            <Route path="/portfolio" element={<PortfolioList portfolio={portfolio} />} />
+            <Route
+              path="/fullList"
+              element={
+                <FullList
+                  fullStocks={fullStocks}
+                  stocks={stocks}
+                  setStocks={setStocks}
+                />
+              }
+            />
           </Routes>
         </ContentContainer>
       </AppContainer>
