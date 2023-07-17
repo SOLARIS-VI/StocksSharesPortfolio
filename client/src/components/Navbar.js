@@ -175,7 +175,7 @@ const Navbar = () => {
           <StyledNavLink to="/portfolio">Portfolio</StyledNavLink>
         </NavMenuItem>
         <NavMenuItem>
-          <StyledNavLink to="/">Other</StyledNavLink>
+          <StyledNavLink to="/fullList">Full List</StyledNavLink>
         </NavMenuItem>
       </NavMenu>
     </Nav>

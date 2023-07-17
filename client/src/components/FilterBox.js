@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+// Styled container for the filter box
 const FilterBoxContainer = styled.div`
   position: fixed;
   top: 20px;
@@ -9,13 +9,13 @@ const FilterBoxContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
 `;
-
+// Styled input field for the filter
 const FilterInput = styled.input`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
-
+// Styled button for filtering
 const FilterButton = styled.button`
   padding: 10px 20px;
   margin-left: 10px;
@@ -25,34 +25,35 @@ const FilterButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
 `;
-
 const FilterBox = ({ onFilter }) => {
-  const [filterText, setFilterText] = useState('');
-
-  const handleFilterChange = (event) => {
-    setFilterText(event.target.value);
+  const [searchTerm, setSearchTerm] = useState("");
+  // Handle input change and update the search term state
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
   };
-
-  const handleFilterSubmit = (event) => {
+  // Trigger the filter callback when the search term changes
+  useEffect(() => {
+    onFilter(searchTerm);
+  }, [searchTerm, onFilter]);
+  // Handle form submission
+  const handleSubmit = (event) => {
     event.preventDefault();
-    onFilter(filterText);
   };
-
   return (
     <FilterBoxContainer>
-      <form onSubmit={handleFilterSubmit}>
+      <form onSubmit={handleSubmit}>
+        {/* Input field for the filter */}
         <FilterInput
           type="text"
           placeholder="Enter a filter..."
-          value={filterText}
-          onChange={handleFilterChange}
+          value={searchTerm}
+          onChange={handleChange}
         />
+        {/* Button for triggering the filter */}
         <FilterButton type="submit">Filter</FilterButton>
       </form>
     </FilterBoxContainer>
   );
 };
-
 export default FilterBox;
-
 

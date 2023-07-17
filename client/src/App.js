@@ -1,16 +1,19 @@
-// App.js (Updated)
+// /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/App.js
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./components/Navbar";
 import ShareList from "./components/ShareList";
 import PortfolioList from "./components/PortfolioList";
+import FullList from "./components/FullList";
+import ShareService from "./services/ShareService";
 import ShareService from "./services/ShareService";
 import ShareDetails from "./components/ShareDetails";
 const finnhub = require("finnhub");
 
 const finnhubClient = new finnhub.DefaultApi();
 import FilterBox from "./components/FilterBox";
+
 
 const AppContainer = styled.div`
   display: flex;
@@ -31,6 +34,7 @@ function App() {
   const [timeFrom, setTimeFrom] = useState(0);
   const [symbol, setSymbol] = useState("APPL");
   const [stocks, setStocks] = useState([]);
+  const [fullStocks, setFullStocks] = useState([]);
   const [candles, setCandles] = useState([]);
 
   useEffect(() => {
@@ -57,19 +61,23 @@ function App() {
       });
   }, []);
 
-  const handleFilter = (filterText) => {
-    const filteredStocks = stocks.filter((stock) => {
-      return stock.name.toLowerCase().includes(filterText.toLowerCase());
-    });
-    setStocks(filteredStocks);
-  };
+  useEffect(() => {
+    ShareService.getStocks()
+      .then((data) => {
+        console.log(data);
+        setFullStocks(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching stocks:", error);
+      });
+  }, []);
+
 
   return (
     <Router>
       <Navbar />
       <AppContainer>
         <ContentContainer>
-          <FilterBox onFilter={handleFilter} />
           <Routes>
 
             <Route
@@ -81,6 +89,7 @@ function App() {
 
             <Route path="/" element={<ShareList stocks={stocks} />} />
             <Route path="/portfolio" element={<PortfolioList />} />
+            <Route path="/fullList" element={<FullList fullStocks={fullStocks} stocks={stocks} setStocks={setStocks} />} />
 
           </Routes>
         </ContentContainer>

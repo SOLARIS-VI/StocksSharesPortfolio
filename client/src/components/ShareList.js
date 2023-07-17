@@ -1,4 +1,3 @@
-// ShareList.js (Updated)
 import React from "react";
 import ShareItem from "./ShareItem";
 
