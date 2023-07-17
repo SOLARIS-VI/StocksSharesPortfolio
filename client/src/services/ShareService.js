@@ -1,7 +1,7 @@
 // /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/services/ShareService.js
 const ShareService = {
   getStocks() {
-    return fetch("https://dumbstockapi.com/stock").then((res) => res.json());
+    return fetch("https://dumbstockapi.com/stock?exchanges=NASDAQ").then((res) => res.json());
   },
 
   getTopStocks() {
