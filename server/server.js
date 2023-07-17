@@ -17,7 +17,7 @@ MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
   })
   .catch(console.error);
 
-  MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
+MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
   .then((client) => {
     const db = client.db("portfolio");
     const portfolioCollection = db.collection("portfolio");
