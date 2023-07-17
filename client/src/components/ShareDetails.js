@@ -15,7 +15,7 @@ const ShareDetails = () => {
   const { id } = useParams();
   const timeNow = parseInt((new Date.now().getTime() / 1000).toFixed(0))
 
-  
+
 
   const handleSelect = (event) => {
     if (event.target.value === "week") {
@@ -27,6 +27,7 @@ const ShareDetails = () => {
         timeNow,
         (error, data, response) => {
           console.log(data);
+          setStockDetails(data)
         }
       );
     }
@@ -40,6 +41,8 @@ const ShareDetails = () => {
       setTimeFrom(timeNow - 31536000);
     }
   };
+
+  
 
   return (
     <>
