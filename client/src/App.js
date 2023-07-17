@@ -1,14 +1,12 @@
+// App.js
 import React, { useState, useEffect } from "react";
-import api_auth from "./components/api_auth";
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./components/Navbar";
 import ShareList from "./components/ShareList";
 import PortfolioList from "./components/PortfolioList";
-import ExampleTickers from "./components/ExampleTickers";
-import ShareService from "./services/ShareService";
 import FilterBox from "./components/FilterBox";
+import ShareItem from "./components/ShareItem";
 
 const AppContainer = styled.div`
   display: flex;
@@ -26,11 +24,20 @@ const ContentContainer = styled.div`
 
 function App() {
   const [stocks, setStocks] = useState([]);
+  const [topStocks, setTopStocks] = useState([]);
 
   useEffect(() => {
-    ShareService.getStocks()
-    .then(stocks => setStocks(stocks))
-  }, [])
+    fetch("http://localhost:9000/api/shares") 
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setStocks(data);
+        setTopStocks(data); 
+      })
+      .catch((error) => {
+        console.error("Error fetching stocks:", error);
+      });
+  }, []);
 
   const handleFilter = (filterText) => {
     const filteredStocks = stocks.filter((stock) => {
@@ -46,9 +53,14 @@ function App() {
         <ContentContainer>
           <FilterBox onFilter={handleFilter} />
           <Routes>
-            <Route path="/" element={<ShareList ExampleTickers={ExampleTickers} />} />
-            <Route path="/portfolio" element={<PortfolioList  />} />
+            <Route path="/" element={<ShareList shares={topStocks} />} />
+            <Route path="/portfolio" element={<PortfolioList />} />
           </Routes>
+          <ul>
+            {stocks.map((stock) => (
+              <ShareItem key={stock.symbol} share={stock} />
+            ))}
+          </ul>
         </ContentContainer>
       </AppContainer>
     </Router>
