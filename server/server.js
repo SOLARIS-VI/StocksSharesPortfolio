@@ -17,6 +17,15 @@ MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
   })
   .catch(console.error);
 
+  MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
+  .then((client) => {
+    const db = client.db("portfolio");
+    const portfolioCollection = db.collection("portfolio");
+    const portfolioRouter = createRouter(portfolioCollection);
+    app.use("/api/portfolio", portfolioRouter);
+  })
+  .catch(console.error);
+
 app.listen(9000, function () {
   console.log(`Listening on port ${this.address().port}`);
 });
