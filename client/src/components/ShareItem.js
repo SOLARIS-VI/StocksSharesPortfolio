@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+
 const ShareItem = ({ share }) => {
   const { name, symbol } = share;
 

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",
-    "styled": "^1.0.0"
+    "styled": "^1.0.0",
+    "styled-components": "^6.0.4"
   }
 }
