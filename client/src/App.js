@@ -95,7 +95,7 @@ function App() {
                 <FullList
                   fullStocks={fullStocks}
                   stocks={stocks}
-                  setStocks={setStocks}
+                  setFullStocks={setFullStocks}
                 />
               }
             />
