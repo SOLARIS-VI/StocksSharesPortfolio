@@ -10,18 +10,18 @@ const ShareDetails = ({ timeNow, setTimeFrom, handleGetCandles }) => {
 
     // setTimeFrom(timeWeek);
 
-  const handleSelect = event => 
-    // if (from === "week") {
-      handleGetCandles(event.target.value);
-    // }
-  ;
+  const handleSelect = event => handleGetCandles(event.target.value)
+  
 
   return (
     <>
       <p>ShareDetails</p>
       <select>
             <option onSelect={handleSelect} value="week">1 week</option>
-
+            <option onSelect={handleSelect} value="month">1 week</option>
+            <option onSelect={handleSelect} value="3month">1 week</option>
+            <option onSelect={handleSelect} value="6month">1 week</option>
+            <option onSelect={handleSelect} value="year">1 week</option>
       </select>
     </>
   );

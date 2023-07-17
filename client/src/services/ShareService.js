@@ -7,6 +7,10 @@ const ShareService = {
   getTopStocks() {
     return fetch("http://localhost:9000/api/share").then((res) => res.json());
   },
+
+  getPortfolioStocks() {
+    return fetch("http://localhost:9000/api/portfolio").then((res) => res.json());
+  }
 };
 
 export default ShareService;
