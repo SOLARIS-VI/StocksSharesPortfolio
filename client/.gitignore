@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 api_auth.js
+
+client/src/components/copia_logo_06.png
