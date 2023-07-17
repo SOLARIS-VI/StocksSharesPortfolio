@@ -1,3 +1,4 @@
+// /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/components/ShareItem.js
 import React from "react";
 
 const ShareItem = ({ share }) => {

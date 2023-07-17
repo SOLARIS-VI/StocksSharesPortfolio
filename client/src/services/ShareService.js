@@ -1,3 +1,4 @@
+// /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/services/ShareService.js
 const ShareService = {
   getStocks() {
     return fetch("https://dumbstockapi.com/stock").then((res) => res.json());
@@ -8,6 +9,4 @@ const ShareService = {
   },
 };
 
-
 export default ShareService;
-
