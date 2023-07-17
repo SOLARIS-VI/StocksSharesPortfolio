@@ -8,6 +8,10 @@ import ShareList from "./components/ShareList";
 import PortfolioList from "./components/PortfolioList";
 import ExampleTickers from "./components/ExampleTickers";
 import ShareService from "./services/ShareService";
+import ShareDetails from "./components/ShareDetails";
+const finnhub = require("finnhub");
+
+const finnhubClient = new finnhub.DefaultApi();
 
 const AppContainer = styled.div`
   display: flex;
@@ -24,13 +28,23 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
+  const [timeNow, setTimeNow] = useState(0);
+  const [timeFrom, setTimeFrom] = useState(0);
+  const [symbol, setSymbol] = useState("APPL");
   const [stocks, setStocks] = useState([]);
+  const [candles, setCandles] = useState([]);
 
   useEffect(() => {
     ShareService.getStocks()
-    .then(stocks => setStocks(stocks))
+      .then((stocks) => setStocks(stocks));
+      setTimeNow(Math.floor(Date.now() / 1000));
   }, [])
 
+  const handleGetCandles = () => {
+    const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
+    setCandles(newCandles);
+    console.log(candles)
+  }
 
   return (
     <Router>
@@ -38,8 +52,17 @@ function App() {
       <AppContainer>
         <ContentContainer>
           <Routes>
-            <Route path="/" element={<ShareList ExampleTickers={ExampleTickers} />} />
-            <Route path="/portfolio" element={<PortfolioList  />} />
+            <Route
+              path="/"
+              element={<ShareList ExampleTickers={ExampleTickers} />}
+            />
+            <Route path="/portfolio" element={<PortfolioList />} />
+            <Route
+              path="/sharedetails"
+              element={
+                <ShareDetails setTimeFrom={setTimeFrom} timeNow={timeNow} handleGetCandles={handleGetCandles} />
+              }
+            />
           </Routes>
         </ContentContainer>
       </AppContainer>
