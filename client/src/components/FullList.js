@@ -3,16 +3,17 @@ import FullListItem from "./FullListItem";
 import FilterBox from "./FilterBox";
 
 
-const FullList = ({ fullStocks, setStocks, stocks }) => {
+const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
+  
   const fullListItems = fullStocks.map((stock) => (
-    <FullListItem key={stock.symbol} share={stock} />
+    <FullListItem key={stock.ticker} share={stock} />
   ));
 
   const handleFilter = (filterText) => {
     const filteredStocks = stocks.filter((stock) => {
       return stock.name.toLowerCase().includes(filterText.toLowerCase());
     });
-    setStocks(filteredStocks);
+    setFullStocks(filteredStocks);
   };
 
   return (
