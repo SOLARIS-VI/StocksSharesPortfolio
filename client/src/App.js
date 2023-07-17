@@ -17,7 +17,7 @@ const AppContainer = styled.div`
 const ContentContainer = styled.div`
   flex: 1;
   padding: 10px;
-  margin-left: 160px;
+  margin-left: 190px;
   @media (max-width: 500px) {
     margin-left: 0;
   }
