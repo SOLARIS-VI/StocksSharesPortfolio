@@ -1,10 +1,10 @@
-// ShareList.js
+// ShareList.js (Updated)
 import React from "react";
 import ShareItem from "./ShareItem";
 
-const ShareList = ({ shares }) => {
-  const shareList = shares.map((share) => (
-    <ShareItem key={share.symbol} share={share} />
+const ShareList = ({ stocks }) => {
+  const shareList = stocks.map((stock) => (
+    <ShareItem key={stock.symbol} share={stock} />
   ));
 
   return (
