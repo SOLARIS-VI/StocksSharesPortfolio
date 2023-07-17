@@ -24,7 +24,7 @@ const ContentContainer = styled.div`
 `;
 function App() {
   const [timeNow, setTimeNow] = useState(0);
-  const [timeFrom, setTimeFrom] = useState(0);
+  // const [timeFrom, setTimeFrom] = useState(0);
   const [symbol, setSymbol] = useState("APPL");
   const [stocks, setStocks] = useState([]);
   const [fullStocks, setFullStocks] = useState([]);
@@ -65,10 +65,10 @@ function App() {
       });
   }, []);
 
-  const handleGetCandles = () => {
+  const handleGetCandles = (symbol, timeFrom ) => {
     const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
     setCandles(newCandles);
-    console.log(candles);
+    console.log(newCandles);
   };
 
   return (
@@ -78,10 +78,9 @@ function App() {
         <ContentContainer>
           <Routes>
             <Route
-              path="/sharedetails/:id"
+              path="/:id"
               element={
                 <ShareDetails
-                  setTimeFrom={setTimeFrom}
                   timeNow={timeNow}
                   handleGetCandles={handleGetCandles}
                 />

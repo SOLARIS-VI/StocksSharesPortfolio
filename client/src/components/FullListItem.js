@@ -8,7 +8,7 @@ const FullListItem = ({ share }) => {
 
   return (
     <li>
-      <Link to ={`/sharedetails/${share.symbol}`}>{name}</Link>
+      <Link to ={`/${share.symbol}`}>{name}</Link>
       <p>Symbol: {symbol}</p>
     </li>
   );

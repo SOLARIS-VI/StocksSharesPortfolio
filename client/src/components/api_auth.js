@@ -1,13 +1,13 @@
-const finnhub = require('finnhub');
-
-const api_auth = finnhub.ApiClient.instance.authentications['api_key'];
-api_auth.apiKey = "cioj89hr01qhd71btpi0cioj89hr01qhd71btpig"
-const finnhubClient = new finnhub.DefaultApi()
+// const finnhub = require('finnhub');
+const key = "cioj89hr01qhd71btpi0cioj89hr01qhd71btpig"
+// const api_auth = finnhub.ApiClient.instance.authentications['api_key'];
+// api_auth.apiKey = "cioj89hr01qhd71btpi0cioj89hr01qhd71btpig"
+// const finnhubClient = new finnhub.DefaultApi()
 
 // Stock candles
-api_auth.getStockCandles = (symbol, timeFrom, timeNow) => finnhubClient.stockCandles(symbol, "D", timeFrom, timeNow, (error, data, response) => {
-    console.log(data)
-});
+// api_auth.getStockCandles = (symbol, timeFrom, timeNow) => finnhubClient.stockCandles(symbol, "D", timeFrom, timeNow, (error, data, response) => {
+//     console.log(data)
+// });
 
 // finnhubClient.stockSymbols("US", (error, data, response) => {
 //     console.log(data)
@@ -355,4 +355,4 @@ api_auth.getStockCandles = (symbol, timeFrom, timeNow) => finnhubClient.stockCan
 // });
 
 
-export default api_auth
+export default key
