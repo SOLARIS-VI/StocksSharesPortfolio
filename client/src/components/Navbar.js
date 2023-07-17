@@ -177,6 +177,9 @@ const Navbar = () => {
         <NavMenuItem>
           <StyledNavLink to="/fullList">Full List</StyledNavLink>
         </NavMenuItem>
+        <NavMenuItem>
+          <StyledNavLink to="/sharedetails">details</StyledNavLink>
+        </NavMenuItem>
       </NavMenu>
     </Nav>
   );
