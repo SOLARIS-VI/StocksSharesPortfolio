@@ -62,7 +62,7 @@ function App() {
         <ContentContainer>
           <Routes>
             <Route
-              path="/sharedetails"
+              path="/sharedetails/:id"
               element={
                 <ShareDetails setTimeFrom={setTimeFrom} timeNow={timeNow} handleGetCandles={handleGetCandles} />
               }
