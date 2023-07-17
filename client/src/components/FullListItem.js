@@ -2,12 +2,12 @@
 import React from "react";
 
 const FullListItem = ({ share }) => {
-  const { name, ticker } = share;
+  const { name, symbol } = share;
 
   return (
     <li>
       <h3>{name}</h3>
-      <p>Symbol: {ticker}</p>
+      <p>Symbol: {symbol}</p>
     </li>
   );
 };

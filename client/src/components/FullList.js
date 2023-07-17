@@ -6,7 +6,7 @@ import FilterBox from "./FilterBox";
 const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
   
   const fullListItems = fullStocks.map((stock) => (
-    <FullListItem key={stock.symbol} share={stock} />
+    <FullListItem key={stock.ticker} share={stock} />
   ));
 
   const handleFilter = (filterText) => {
