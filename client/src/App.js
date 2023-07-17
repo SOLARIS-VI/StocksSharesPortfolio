@@ -8,6 +8,7 @@ import ShareList from "./components/ShareList";
 import PortfolioList from "./components/PortfolioList";
 import ExampleTickers from "./components/ExampleTickers";
 import ShareService from "./services/ShareService";
+import FilterBox from "./components/FilterBox";
 
 const AppContainer = styled.div`
   display: flex;
@@ -31,12 +32,19 @@ function App() {
     .then(stocks => setStocks(stocks))
   }, [])
 
+  const handleFilter = (filterText) => {
+    const filteredStocks = stocks.filter((stock) => {
+      return stock.name.toLowerCase().includes(filterText.toLowerCase());
+    });
+    setStocks(filteredStocks);
+  };
 
   return (
     <Router>
       <Navbar />
       <AppContainer>
         <ContentContainer>
+          <FilterBox onFilter={handleFilter} />
           <Routes>
             <Route path="/" element={<ShareList ExampleTickers={ExampleTickers} />} />
             <Route path="/portfolio" element={<PortfolioList  />} />
