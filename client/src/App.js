@@ -69,7 +69,7 @@ function App() {
             />
             <Route path="/" element={<ShareList stocks={stocks} />} />
             <Route path="/portfolio" element={<PortfolioList />} />
-            <Route path="/fullList" element={<FullList fullStocks={fullStocks} stocks={stocks} setStocks={setStocks} />} />
+            <Route path="/fullList" element={<FullList setFullStocks={setFullStocks} fullStocks={fullStocks} stocks={stocks} setStocks={setStocks} />} />
           </Routes>
         </ContentContainer>
       </AppContainer>
