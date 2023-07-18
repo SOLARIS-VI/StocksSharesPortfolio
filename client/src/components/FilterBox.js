@@ -2,28 +2,45 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const FilterBoxContainer = styled.div`
-  position: fixed;
-  top: 20px;
-  right: 20px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-left: 39px; 
+  position: fixed;
+  margin-top: 20px;
+  z-index: 1;
+  /* width: 100%; */
+
+  @media (max-width: 500px) {
+    display: flex;
+    justify-content: start;
+    position: fixed;
+    margin-top: 20px;
+    z-index: 1;
+    width: 100%;
+  }
 `;
 
 const FilterInput = styled.input`
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 800px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+
+  @media (max-width: 500px) {
+    padding: 10px;
+  width: 150px;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+  }
 `;
 
-// Renamed FilterButton to ClearButton
 const ClearButton = styled.button`
   padding: 10px 20px;
   margin-left: 10px;
-  background-color: #555;
+  background-color: black;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 30px;
   cursor: pointer;
 `;
 
@@ -42,7 +59,6 @@ const FilterBox = ({ onFilter }) => {
     event.preventDefault();
   };
 
-  // Added a clearSearch function to clear the input field
   const clearSearch = () => {
     setSearchTerm("");
   };
@@ -52,12 +68,13 @@ const FilterBox = ({ onFilter }) => {
       <form onSubmit={handleSubmit}>
         <FilterInput
           type="text"
-          placeholder="Enter a filter..."
+          placeholder="Search for stock..."
           value={searchTerm}
           onChange={handleChange}
         />
-        {/* Changed FilterButton to ClearButton with onClick function */}
-        <ClearButton type="button" onClick={clearSearch}>Clear</ClearButton>
+        <ClearButton type="button" onClick={clearSearch}>
+          Clear Filter
+        </ClearButton>
       </form>
     </FilterBoxContainer>
   );

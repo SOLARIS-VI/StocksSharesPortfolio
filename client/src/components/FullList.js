@@ -1,10 +1,15 @@
 import React from "react";
 import FullListItem from "./FullListItem";
 import FilterBox from "./FilterBox";
+import styled from "styled-components";
 
+const ListContainer = styled.div`
+  margin-top: 70px;
+  max-height: calc(100vh - 110px); 
+  overflow-y: auto;
+`;
 
 const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
-  
   const fullListItems = fullStocks.map((stock) => (
     <FullListItem key={stock.ticker} share={stock} />
   ));
@@ -17,11 +22,14 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
   };
 
   return (
-    <div>
-      <FilterBox onFilter={handleFilter} />
-      <h3>This is FullList Page</h3>
-      <ul>{fullListItems}</ul>
-    </div>
+    <>
+      <div>
+        <FilterBox onFilter={handleFilter} />
+      </div>
+      <ListContainer>
+        <ul>{fullListItems}</ul>
+      </ListContainer>
+    </>
   );
 };
 
