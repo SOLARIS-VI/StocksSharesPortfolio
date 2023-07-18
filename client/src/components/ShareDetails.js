@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import key from "./api_auth";
 import styled from "styled-components";
+import { Chart } from "react-google-charts"
 const finnhub = require("finnhub");
 
 
@@ -17,10 +18,11 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
   const finnhubClient = new finnhub.DefaultApi();
 
   const [timeFrom, setTimeFrom] = useState(0);
-  const [stockDetails, setStockDetails] = useState([]);
+  const [stockDetails, setStockDetails] = useState({});
   const [symbol, setSymbol] = useState("");
   const [companyProfile, setCompanyProfile] = useState([]);
   const [numberOfShares, setNumberOfShares] = useState(0)
+  const [chartData, setChartData] = useState([])
 
   const { id } = useParams();
   const timeNow = Math.floor(new Date().getTime() / 1000).toFixed(0);
@@ -41,8 +43,21 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
     timeFrom,
     timeNow,
     (error, data, response) => {
-      console.log(data)
-      setStockDetails(data)
+      console.log(data);
+      const days = data.t
+      const daysFormatted = days.map((day) => {
+        const dayFormatted = new Date(day*1000)
+        return dayFormatted.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })})
+      const highs = data.h;
+      const lows = data.l
+      let chartTemp = daysFormatted.map((x, index) => [x, highs[index], lows[index]])
+      chartTemp.unshift(["Date", "High", "Low"])
+      console.log(chartTemp)
+      setChartData(chartTemp)
     }
   );
 
@@ -61,7 +76,13 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
     }
   };
 
-  const date = new Date("2020-07-22T13:22:10.2566789+00:00");
+  useEffect(() => {
+    if (stockDetails.length > 0) {
+    let chartTemp = stockDetails.t.map((x, index) => [x, stockDetails.h[index]])
+    console.log(chartTemp)
+}}, [stockDetails])
+
+  const date = new Date(companyProfile.ipo);
   const formattedDate = date.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
@@ -78,10 +99,11 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
     event.preventDefault();
     handlePortfolioSubmit({"symbol": id, "name": companyProfile.name, "numberOfShares": numberOfShares})
   }
+  
 
   return (
     <ContentContainer>
-      <p>ShareDetails</p>
+      <p>Select time frame for share prices</p>
       <select onChange={handleSelect}>
         <option value="week">1 Week</option>
         <option value="month">1 Month </option>
@@ -101,6 +123,16 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
         <p>IPO: {formattedDate}</p>
         <p>Market Capitalisation: {companyProfile.marketCapitalization}</p>
         <p>Outstanding share: {companyProfile.shareOutstanding}</p>
+      </div>
+      <div>
+        { chartData.length >0 ?
+          <Chart 
+          chartType="LineChart"
+          width="100%"
+          height="400px"
+          
+          data={chartData}
+        /> : null}
       </div>
     </ContentContainer>
   );
