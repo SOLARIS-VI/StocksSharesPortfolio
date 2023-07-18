@@ -98,7 +98,10 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePortfolioSubmit({"symbol": id, "name": companyProfile.name, "numberOfShares": numberOfShares})
+    window.location.reload()
   }
+
+  const options = {hAxis: {ticks: [30, 60, 90, 120, 150]} }
   
 
   return (
@@ -130,7 +133,7 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
           chartType="LineChart"
           width="100%"
           height="400px"
-          
+          options={options}
           data={chartData}
         /> : null}
       </div>

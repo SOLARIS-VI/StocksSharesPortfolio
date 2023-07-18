@@ -92,16 +92,16 @@ db.portfolio.insertMany([
     {
         "symbol": "PEP",
         "name": "PepsiCo Inc.",
-        "shares": 20
+        "numberOfShares": "20"
       }, 
       {
         "symbol": "COST",
         "name": "Costco Wholesale Corp",
-        "shares": 10
+        "numberOfShares": "10"
       }, 
       {
         "symbol": "ADBE",
         "name": "Adobe Inc.",
-        "shares": 20
+        "numberOfShares": "20"
       }
 ])
