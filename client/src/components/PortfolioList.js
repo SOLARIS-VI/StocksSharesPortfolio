@@ -5,7 +5,6 @@ import PortfolioItem from "./PortfolioItem";
 const PortfolioList = ({ portfolio }) => {
 
 
-
   // Mapping portfolio items to PortfolioItem components
   const portfolioNodes = portfolio.map((portfolioItem) => (
     <PortfolioItem key={portfolioItem.id} share={portfolioItem} /> // Use 'id' as the key
@@ -15,7 +14,7 @@ const PortfolioList = ({ portfolio }) => {
   return (
     <>
       <h1>Portfolio Page</h1>
-      {/* <ul>{portfolioNodes}</ul> */}
+      <ul>{portfolioNodes}</ul>
     </>
   );
 };
