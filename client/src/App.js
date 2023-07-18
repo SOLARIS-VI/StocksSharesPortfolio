@@ -19,7 +19,10 @@ const ContentContainer = styled.div`
   padding: 10px;
   margin-left: 150px;
   @media (max-width: 500px) {
-    margin-left: 0;
+    margin: 0;
+    padding-right: 10px;
+    padding-left: 0;
+    align-items: flex-start;
   }
 `;
 function App() {
