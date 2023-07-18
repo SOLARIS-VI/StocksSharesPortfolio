@@ -65,14 +65,14 @@ function App() {
       });
   }, []);
 
-  // const handlePortfolioSubmit = newItem => {
-  //   fetch('http://localhost:9000/api/portfolio', {
-  //     method: 'POST',
-  //     body: JSON.stringify(newItem),
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  //     .then(() => ShareService.getPortfolioStocks())
-  // }
+  const handlePortfolioSubmit = newItem => {
+    fetch('http://localhost:9000/api/portfolio', {
+      method: 'POST',
+      body: JSON.stringify(newItem),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(() => ShareService.getPortfolioStocks())
+  }
 
   // const handleGetCandles = (symbol, timeFrom ) => {
   //   const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
@@ -90,7 +90,7 @@ function App() {
               path="/:id"
               element={
                 <ShareDetails
-                  timeNow={timeNow}
+                  timeNow={timeNow} handlePortfolioSubmit={handlePortfolioSubmit}
                 />
               }
             />

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import key from "./api_auth";
 const finnhub = require("finnhub");
 
-const ShareDetails = () => {
+const ShareDetails = ({ handlePortfolioSubmit}) => {
   const api_auth = finnhub.ApiClient.instance.authentications["api_key"];
   api_auth.apiKey = key;
   const finnhubClient = new finnhub.DefaultApi();
@@ -67,7 +67,7 @@ const ShareDetails = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // handlePortfolioSubmit({"symbol": id, "name": stockDetails.name, "numberOfShares": numberOfShares})
+    handlePortfolioSubmit({"symbol": id, "name": stockDetails.name, "numberOfShares": numberOfShares})
   }
 
   return (
