@@ -103,12 +103,12 @@ const ShareDetails = ({ handlePortfolioSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handlePortfolioSubmit({
-      symbol: id,
-      name: companyProfile.name,
-      numberOfShares: numberOfShares,
-    });
-  };
+    handlePortfolioSubmit({"symbol": id, "name": companyProfile.name, "numberOfShares": numberOfShares})
+    window.location.reload()
+  }
+
+  const options = {hAxis: {ticks: [30, 60, 90, 120, 150]} }
+  
 
   return (
     <ContentContainer>
@@ -134,14 +134,14 @@ const ShareDetails = ({ handlePortfolioSubmit }) => {
         <p>Outstanding share: {companyProfile.shareOutstanding}</p>
       </div>
       <div>
-        {chartData.length > 0 ? (
-          <Chart
-            chartType="LineChart"
-            width="100%"
-            height="400px"
-            data={chartData}
-          />
-        ) : null}
+        { chartData.length >0 ?
+          <Chart 
+          chartType="LineChart"
+          width="100%"
+          height="400px"
+          options={options}
+          data={chartData}
+        /> : null}
       </div>
     </ContentContainer>
   );

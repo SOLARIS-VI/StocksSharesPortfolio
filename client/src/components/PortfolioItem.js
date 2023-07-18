@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+
 const ListItem = styled.li`
   display: flex;
   align-items: center;
@@ -78,7 +79,7 @@ const ShareWrapper = styled.div`
 `;
 
 const PortfolioItem = ({ share }) => {
-  const { name, symbol, shares } = share;
+  const { name, symbol, numberOfShares } = share; 
   return (
     <ListItem>
       <SymbolWrapper>
@@ -93,3 +94,4 @@ const PortfolioItem = ({ share }) => {
 };
 
 export default PortfolioItem;
+
