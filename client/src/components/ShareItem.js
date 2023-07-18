@@ -1,7 +1,8 @@
-// /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/components/ShareItem.js
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListItem = styled.li`
   display: flex;
@@ -20,7 +21,7 @@ const SymbolWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90px; 
+  width: 90px;
   background-color: black;
   height: 50px;
   border-radius: 40px;
@@ -34,6 +35,13 @@ const ShareName = styled(Link)`
   position: relative;
   text-align: center;
   flex-grow: 1;
+  transition: all 0.5s;
+
+
+  &:hover {
+    color: grey;
+    transform: scale(1.5);
+  }
 `;
 
 const SymbolText = styled(Link)`
@@ -42,28 +50,35 @@ const SymbolText = styled(Link)`
   font-size: 12px;
   font-weight: bold;
   position: relative;
+  transition: all 0.5s;
 
   &:hover {
     color: grey;
+    transform: scale(1.5);
   }
+`;
 
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    background: black;
-    height: 1px;
-    transition: width 0.5s;
+const WatchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  background-color: darkgrey;
+  height: 50px;
+  border-radius: 40px;
+
+  @media (max-width: 500px) {
+    display: none;
   }
+`;
 
-  &:hover:after {
-    background-color: grey;
-    width: 100%;
+const IconContainer = styled.div`
+  position: relative;
+  transition: all 0.5s;
+
+  &:hover {
+    color: black;
+    transform: scale(1.5);
   }
 `;
 
@@ -73,9 +88,16 @@ const ShareItem = ({ share }) => {
   return (
     <ListItem>
       <SymbolWrapper>
-      <SymbolText to ={`/${share.symbol}`}>{symbol}</SymbolText>
+        <SymbolText to={`/${share.symbol}`}>{symbol}</SymbolText>
       </SymbolWrapper>
-      <ShareName to ={`/${share.symbol}`}>{name}</ShareName>
+      <ShareName to={`/${share.symbol}`}>{name}</ShareName>
+      <Link to={`/${share.symbol}`}>
+        <WatchWrapper>
+          <IconContainer>
+            <FontAwesomeIcon icon={faEye} style={{ color: "#ffffff" }} />
+          </IconContainer>
+        </WatchWrapper>
+      </Link>
     </ListItem>
   );
 };

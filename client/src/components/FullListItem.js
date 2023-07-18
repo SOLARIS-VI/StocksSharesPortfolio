@@ -29,7 +29,7 @@ const SymbolWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90px; 
+  width: 90px;
   background-color: black;
   height: 50px;
   border-radius: 40px;
@@ -72,7 +72,7 @@ const FullListItem = ({ share }) => {
   return (
     <ListItem>
       <SymbolWrapper>
-      <SymbolText to={`/${share.ticker}`}>{ticker}</SymbolText>
+        <SymbolText to={`/${share.ticker}`}>{ticker}</SymbolText>
       </SymbolWrapper>
       <ShareName to={`/${share.ticker}`}>{name}</ShareName>
     </ListItem>
@@ -80,4 +80,3 @@ const FullListItem = ({ share }) => {
 };
 
 export default FullListItem;
-

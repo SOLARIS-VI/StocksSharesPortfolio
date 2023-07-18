@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "styled": "^1.0.0",
     "styled-components": "^6.0.4"
   }
