@@ -6,7 +6,7 @@ const FilterBoxContainer = styled.div`
   justify-content: center;
   margin-left: 39px; 
   position: fixed;
-  margin-top: 20px;
+  margin-top: 560px;
   z-index: 1;
   /* width: 100%; */
 
