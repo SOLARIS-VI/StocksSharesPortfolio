@@ -22,7 +22,7 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
       { symbol: id},
       (error, data, response) => {
         console.log(data);
-        setStockDetails(data);
+        setCompanyProfile(data);
       }
     );
   }, []);
@@ -33,8 +33,8 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
     timeFrom,
     timeNow,
     (error, data, response) => {
-      console.log(data);
-      setStockDetails(data);
+      console.log(data)
+      setStockDetails(data)
     }
   );
 
@@ -63,11 +63,12 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
   const handleChange = (event) => {
     const numberOfShares = event.target.value
     console.log(numberOfShares)
+    setNumberOfShares(numberOfShares)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handlePortfolioSubmit({"symbol": id, "name": stockDetails.name, "numberOfShares": numberOfShares})
+    handlePortfolioSubmit({"symbol": id, "name": companyProfile.name, "numberOfShares": numberOfShares})
   }
 
   return (
@@ -82,16 +83,16 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
       </select>
       <hr />
       <div>
-        <img src={stockDetails.logo} />
-        <h1>{stockDetails.name}</h1>
-        <p>{stockDetails.ticker}</p>
+        <img src={companyProfile.logo} />
+        <h1>{companyProfile.name}</h1>
+        <p>{companyProfile.ticker}</p>
         <form onChange={handleChange} onSubmit={handleSubmit}>
           <input type="number" placeholder="Number of Shares" />
           <input type="submit" value="Buy Shares"></input>
         </form>
         <p>IPO: {formattedDate}</p>
-        <p>Market Capitalisation: {stockDetails.marketCapitalization}</p>
-        <p>Outstanding share: {stockDetails.shareOutstanding}</p>
+        <p>Market Capitalisation: {companyProfile.marketCapitalization}</p>
+        <p>Outstanding share: {companyProfile.shareOutstanding}</p>
       </div>
     </>
   );
