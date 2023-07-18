@@ -3,7 +3,13 @@ import ShareItem from "./ShareItem";
 
 const PortfolioList = ({ portfolio }) => {
   const portfolioNodes = portfolio.map((portfolioItem) => (
-    <ShareItem key={portfolioItem.symbol} share={portfolioItem} />
+    <ShareItem
+      key={portfolioItem.id}
+      id={portfolioItem.id}
+      name={portfolioItem.name}
+      symbol={portfolioItem.symbol}
+      shares={portfolioItem.shares}
+    />
   ));
 
   return (
