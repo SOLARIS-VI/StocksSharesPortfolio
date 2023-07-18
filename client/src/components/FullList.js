@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import FullListItem from "./FullListItem";
 import FilterBox from "./FilterBox";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 
 const ListContainer = styled.div`
   margin-top: 10px;
@@ -25,11 +28,26 @@ const Label = styled.label`
   margin-top: 20px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   height: 30px;
+  position: relative;
 
   @media (max-width: 500px) {
     max-height: calc(100vh - 140px);
     margin-top: 50px;
     margin-right: 30px;
+  }
+`;
+
+const BuildingColumns = styled.div`
+  margin-left: 34px;
+`;
+
+const BuildingContainer = styled.div`
+  position: absolute;
+  left: 54%;
+  transform: translateX(-50%);
+
+  @media (max-width: 500px) {
+    left: 59%;
   }
 `;
 
@@ -50,7 +68,17 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
   return (
     <>
       <FilterBox onFilter={handleFilter} />
-      <Label></Label>
+      <Label>
+        <BuildingColumns>
+          <FontAwesomeIcon
+            icon={faBuildingColumns}
+            style={{ color: "#ffffff" }}
+          />
+        </BuildingColumns>
+        <BuildingContainer>
+          <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
+        </BuildingContainer>
+      </Label>
       <ListContainer>
         <ul>{fullListItems}</ul>
       </ListContainer>

@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logoImage from "./copia_logo_06.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faWallet } from "@fortawesome/free-solid-svg-icons";
+import { faListUl } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = styled.nav`
   background-color: black;
@@ -11,7 +15,7 @@ const Nav = styled.nav`
   margin: 20px;
   position: fixed;
   height: 90%;
-  border-radius: 20px; 
+  border-radius: 20px;
 
   @media (max-width: 500px) {
     position: static;
@@ -179,14 +183,29 @@ const Title = styled.h1`
 `;
 
 const LogoImage = styled.img`
-  width: 140px; /* Adjust the width as needed */
-  height: 140px; /* Maintain aspect ratio */
+  width: 140px;
+  height: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media (max-width: 500px) {
     display: none;
+  }
+`;
+
+const IconContainer = styled.div`
+  position: relative;
+  transition: all 0.5s;
+
+  &:hover {
+    color: grey;
+    transform: scale(2);
+  }
+
+  &:hover:after {
+    background-color: grey;
+    width: 100%;
   }
 `;
 
@@ -230,16 +249,32 @@ const Navbar = () => {
         </>
       )}
       <Title>COPIA</Title>
+
       <NavMenu $isopen={isopen}>
         <NavMenuItem>
-          <StyledNavLink to="/">Home</StyledNavLink>
+          <Link to="/">
+            <IconContainer>
+              <FontAwesomeIcon icon={faHouse} style={{ color: "#ffffff" }} />
+            </IconContainer>
+          </Link>
         </NavMenuItem>
         <NavMenuItem>
-          <StyledNavLink to="/portfolio">Portfolio</StyledNavLink>
+          <Link to="/portfolio">
+            <IconContainer>
+              <FontAwesomeIcon icon={faWallet} style={{ color: "#ffffff" }} />
+            </IconContainer>
+          </Link>
         </NavMenuItem>
         <NavMenuItem>
+          <Link to="/fullList">
+            <IconContainer>
+              <FontAwesomeIcon icon={faListUl} style={{ color: "#ffffff" }} />
+            </IconContainer>
+          </Link>
+        </NavMenuItem>
+        {/* <NavMenuItem>
           <StyledNavLink to="/fullList">Full List</StyledNavLink>
-        </NavMenuItem>
+        </NavMenuItem> */}
         <LogoImage src={logoImage} alt="Copia Logo" />
       </NavMenu>
     </Nav>
