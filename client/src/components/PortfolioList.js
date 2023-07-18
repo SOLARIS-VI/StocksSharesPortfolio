@@ -13,7 +13,7 @@ const PortfolioList = ({ portfolio }) => {
   return (
     <>
       <h1>Portfolio Page</h1>
-      <ul>{portfolioNodes}</ul>
+      {/* <ul>{portfolioNodes}</ul> */}
     </>
   );
 };

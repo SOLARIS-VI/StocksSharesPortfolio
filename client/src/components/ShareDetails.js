@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import key from "./api_auth";
+import styled from "styled-components";
 const finnhub = require("finnhub");
+
+
+const ContentContainer = styled.div`
+  flex: 1;
+  padding: 10px;
+  margin-left: 30px;
+`;
 
 const ShareDetails = ({ handlePortfolioSubmit}) => {
   const api_auth = finnhub.ApiClient.instance.authentications["api_key"];
@@ -72,7 +80,7 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
   }
 
   return (
-    <>
+    <ContentContainer>
       <p>ShareDetails</p>
       <select onChange={handleSelect}>
         <option value="week">1 Week</option>
@@ -94,7 +102,7 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
         <p>Market Capitalisation: {companyProfile.marketCapitalization}</p>
         <p>Outstanding share: {companyProfile.shareOutstanding}</p>
       </div>
-    </>
+    </ContentContainer>
   );
 };
 
