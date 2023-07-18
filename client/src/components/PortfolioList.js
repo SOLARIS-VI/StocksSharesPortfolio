@@ -1,19 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import PortfolioItem from "./PortfolioItem";
 
 const PortfolioList = ({ portfolio }) => {
 
-  // PortfolioItem component
-  const PortfolioItem = ({ share }) => {
-    const { name, symbol, shares } = share; 
-    return (
-      <li>
-        <Link to={`/${symbol}`}>{name}</Link>
-        <p>Symbol: {symbol}</p>
-        <p>Number of Shares: {shares}</p> {/* Displaying 'shares' */}
-      </li>
-    );
-  };
+
 
   // Mapping portfolio items to PortfolioItem components
   const portfolioNodes = portfolio.map((portfolioItem) => (
