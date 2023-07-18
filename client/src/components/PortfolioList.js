@@ -2,6 +2,9 @@
 import React from 'react';
 import PortfolioItem from './PortfolioItem';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 
 const ListContainer = styled.div`
   margin-top: 10px;
@@ -34,8 +37,21 @@ const Label = styled.label`
   }
 `;
 
+const BuildingColumns = styled.div`
+  margin-left: 34px;
+`;
+
+const BuildingContainer = styled.div`
+  position: absolute;
+  left: 54%;
+  transform: translateX(-50%);
+
+  @media (max-width: 500px) {
+    left: 59%;
+  }
+`;
+
 const PortfolioListWrapper = styled(ListContainer)`
-  /* Add any additional styles specific to the PortfolioList here */
 `;
 
 const PortfolioList = ({ portfolio }) => {
@@ -45,7 +61,17 @@ const PortfolioList = ({ portfolio }) => {
 
   return (
     <>
-      <Label></Label>
+      <Label>
+      <BuildingColumns>
+          <FontAwesomeIcon
+            icon={faBuildingColumns}
+            style={{ color: "#ffffff" }}
+          />
+        </BuildingColumns>
+        <BuildingContainer>
+          <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
+        </BuildingContainer>
+      </Label>
       <PortfolioListWrapper>
         <ul>{portfolioNodes}</ul>
       </PortfolioListWrapper>

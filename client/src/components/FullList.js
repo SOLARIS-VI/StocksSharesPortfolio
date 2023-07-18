@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FullListItem from "./FullListItem";
 import FilterBox from "./FilterBox";
 import styled from "styled-components";
@@ -32,7 +32,6 @@ const Label = styled.label`
 
   @media (max-width: 500px) {
     max-height: calc(100vh - 140px);
-    margin-top: 50px;
     margin-right: 30px;
   }
 `;
@@ -53,10 +52,24 @@ const BuildingContainer = styled.div`
 
 const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
   const [filteredStocks, setFilteredStocks] = useState(stocks);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const fullListItems = filteredStocks.map((stock) => (
     <FullListItem key={stock.ticker} share={stock} />
   ));
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 500);
+    };
+
+    handleResize(); // Set initial screen width
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleFilter = (filterText) => {
     const filteredTemp = fullStocks.filter((stock) => {
@@ -67,21 +80,19 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
 
   return (
     <>
-      <FilterBox onFilter={handleFilter} />
       <Label>
         <BuildingColumns>
-          <FontAwesomeIcon
-            icon={faBuildingColumns}
-            style={{ color: "#ffffff" }}
-          />
+          <FontAwesomeIcon icon={faBuildingColumns} style={{ color: "#ffffff" }} />
         </BuildingColumns>
         <BuildingContainer>
           <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
         </BuildingContainer>
       </Label>
+      {isSmallScreen && <FilterBox onFilter={handleFilter} />} {/* Show FilterBox on small screens */}
       <ListContainer>
         <ul>{fullListItems}</ul>
       </ListContainer>
+      {!isSmallScreen && <FilterBox onFilter={handleFilter} />} {/* Show FilterBox on large screens */}
     </>
   );
 };

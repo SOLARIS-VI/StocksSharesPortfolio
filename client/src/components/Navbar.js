@@ -73,34 +73,6 @@ const NavLink = styled(Link)`
   }
 `;
 
-const StyledNavLink = styled(NavLink)`
-  position: relative;
-  transition: all 0.5s;
-
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    background: #aaa;
-    height: 1px;
-    transition: width 0.5s;
-  }
-
-  &:hover {
-    color: grey;
-  }
-
-  &:hover:after {
-    background-color: grey;
-    width: 100%;
-  }
-`;
-
 const OpenButton = styled.span`
   font-size: 30px;
   color: black;
@@ -272,9 +244,6 @@ const Navbar = () => {
             </IconContainer>
           </Link>
         </NavMenuItem>
-        {/* <NavMenuItem>
-          <StyledNavLink to="/fullList">Full List</StyledNavLink>
-        </NavMenuItem> */}
         <LogoImage src={logoImage} alt="Copia Logo" />
       </NavMenu>
     </Nav>
