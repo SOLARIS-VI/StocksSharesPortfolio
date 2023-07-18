@@ -91,14 +91,17 @@ db.dropDatabase();
 db.portfolio.insertMany([
     {
         "symbol": "PEP",
-        "name": "PepsiCo Inc."
+        "name": "PepsiCo Inc.",
+        "shares": 20
       }, 
       {
         "symbol": "COST",
-        "name": "Costco Wholesale Corp"
+        "name": "Costco Wholesale Corp",
+        "shares": 10
       }, 
       {
         "symbol": "ADBE",
-        "name": "Adobe Inc."
+        "name": "Adobe Inc.",
+        "shares": 20
       }
 ])
