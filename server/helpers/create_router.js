@@ -63,7 +63,8 @@ const createRouter = function (collection) {
 
   // UPDATE
   router.put("/:id", (request, response) => {
-    const id = request.params.id;
+    const id = request.body.id;
+    console.log(id)
     const updatedData = request.body;
     collection
       .updateOne({ _id: new ObjectId(id) }, { $set: updatedData })
