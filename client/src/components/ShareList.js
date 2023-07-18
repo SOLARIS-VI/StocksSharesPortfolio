@@ -33,7 +33,6 @@ const Label = styled.label`
 
   @media (max-width: 500px) {
     max-height: calc(100vh - 140px);
-    margin-top: 50px;
     margin-right: 30px;
   }
 `;
@@ -44,7 +43,7 @@ const BuildingColumns = styled.div`
 
 const BuildingContainer = styled.div`
   position: absolute;
-  left: 49%;
+  left: 49.5%;
   transform: translateX(-50%);
 
   @media (max-width: 500px) {
@@ -53,7 +52,7 @@ const BuildingContainer = styled.div`
 `;
 
 const Info = styled.div`
-  margin-right: 50px;
+  margin-right: 40px;
 @media (max-width: 500px) {
     display: none;
 }
