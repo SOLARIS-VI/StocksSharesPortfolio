@@ -6,9 +6,7 @@ const PortfolioList = ({ portfolio }) => {
     <ShareItem
       key={portfolioItem.id}
       id={portfolioItem.id}
-      name={portfolioItem.name}
-      symbol={portfolioItem.symbol}
-      shares={portfolioItem.shares}
+      share={portfolioItem}
     />
   ));
 
