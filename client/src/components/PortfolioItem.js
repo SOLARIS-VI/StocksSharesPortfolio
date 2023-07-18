@@ -87,7 +87,7 @@ const PortfolioItem = ({ share }) => {
       </SymbolWrapper>
       <ShareName to={`/${symbol}`}>{name}</ShareName>
       <ShareWrapper>
-        <p>No. of Shares: {shares}</p>
+        <p>No. of Shares: {numberOfShares}</p>
       </ShareWrapper>
     </ListItem>
   );
