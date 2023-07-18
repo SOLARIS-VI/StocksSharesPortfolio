@@ -15,7 +15,7 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
   ));
 
   const handleFilter = (filterText) => {
-    const filteredStocks = stocks.filter((stock) => {
+    const filteredStocks = fullStocks.filter((stock) => {
       return stock.name.toLowerCase().includes(filterText.toLowerCase());
     });
     setFullStocks(filteredStocks);
