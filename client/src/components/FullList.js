@@ -2,48 +2,57 @@ import React, { useState } from "react";
 import FullListItem from "./FullListItem";
 import FilterBox from "./FilterBox";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 
 const ListContainer = styled.div`
-  margin-top: 60px;
-  max-height: calc(100vh - 160px); 
+  margin-top: 10px;
+  max-height: calc(100vh - 150px);
   overflow-y: auto;
 
   @media (max-width: 500px) {
-  max-height: calc(100vh - 190px); 
-  margin-top: 110px;
-  padding-right: 30px;
+    max-height: calc(100vh - 140px);
+    margin-top: 0px;
+    padding-right: 30px;
   }
 `;
-
 const Label = styled.label`
   display: flex;
-  justify-content: center;
-  position: fixed;
-  z-index: 1;
-  width: 82%;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  background-color: #000;
+  border-radius: 40px;
+  margin-left: 40px;
   margin-top: 20px;
-  background-color: black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   height: 30px;
-  border-radius: 20px;
-  color: white;
-  text-align: center;
-  left: 200px; /* Set the left property to maintain fixed padding on the left */
+  position: relative;
 
   @media (max-width: 500px) {
-    display: flex;
-    justify-content: start;
-    position: fixed;
-    margin-top: 70px;
-    z-index: 1;
-    width: 83%;
-    left: 39px; /* Set the left property for smaller screens as well */
+    max-height: calc(100vh - 140px);
+    margin-top: 50px;
+    margin-right: 30px;
   }
 `;
 
+const BuildingColumns = styled.div`
+  margin-left: 34px;
+`;
+
+const BuildingContainer = styled.div`
+  position: absolute;
+  left: 54%;
+  transform: translateX(-50%);
+
+  @media (max-width: 500px) {
+    left: 59%;
+  }
+`;
 
 const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
-
-  const [filteredStocks, setFilteredStocks] = useState(stocks)
+  const [filteredStocks, setFilteredStocks] = useState(stocks);
 
   const fullListItems = filteredStocks.map((stock) => (
     <FullListItem key={stock.ticker} share={stock} />
@@ -58,8 +67,18 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
 
   return (
     <>
-    <Label></Label>
-        <FilterBox onFilter={handleFilter} />
+      <FilterBox onFilter={handleFilter} />
+      <Label>
+        <BuildingColumns>
+          <FontAwesomeIcon
+            icon={faBuildingColumns}
+            style={{ color: "#ffffff" }}
+          />
+        </BuildingColumns>
+        <BuildingContainer>
+          <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
+        </BuildingContainer>
+      </Label>
       <ListContainer>
         <ul>{fullListItems}</ul>
       </ListContainer>

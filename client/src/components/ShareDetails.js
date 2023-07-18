@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import key from "./api_auth";
 import styled from "styled-components";
-import { Chart } from "react-google-charts"
+import { Chart } from "react-google-charts";
 const finnhub = require("finnhub");
-
 
 const ContentContainer = styled.div`
   flex: 1;
@@ -12,7 +11,7 @@ const ContentContainer = styled.div`
   margin-left: 30px;
 `;
 
-const ShareDetails = ({ handlePortfolioSubmit}) => {
+const ShareDetails = ({ handlePortfolioSubmit }) => {
   const api_auth = finnhub.ApiClient.instance.authentications["api_key"];
   api_auth.apiKey = key;
   const finnhubClient = new finnhub.DefaultApi();
@@ -21,49 +20,52 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
   const [stockDetails, setStockDetails] = useState({});
   const [symbol, setSymbol] = useState("");
   const [companyProfile, setCompanyProfile] = useState([]);
-  const [numberOfShares, setNumberOfShares] = useState(0)
-  const [chartData, setChartData] = useState([])
+  const [numberOfShares, setNumberOfShares] = useState(0);
+  const [chartData, setChartData] = useState([]);
 
   const { id } = useParams();
   const timeNow = Math.floor(new Date().getTime() / 1000).toFixed(0);
 
   useEffect(() => {
-    finnhubClient.companyProfile2(
-      { symbol: id},
-      (error, data, response) => {
-        console.log(data);
-        setCompanyProfile(data);
-      }
-    );
+    finnhubClient.companyProfile2({ symbol: id }, (error, data, response) => {
+      console.log(data);
+      setCompanyProfile(data);
+    });
   }, []);
 
-  const getCandles = (timeFrom) => finnhubClient.stockCandles(
-    id,
-    "D",
-    timeFrom,
-    timeNow,
-    (error, data, response) => {
-      console.log(data);
-      const days = data.t
-      const daysFormatted = days.map((day) => {
-        const dayFormatted = new Date(day*1000)
-        return dayFormatted.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })})
-      const highs = data.h;
-      const lows = data.l
-      let chartTemp = daysFormatted.map((x, index) => [x, highs[index], lows[index]])
-      chartTemp.unshift(["Date", "High", "Low"])
-      console.log(chartTemp)
-      setChartData(chartTemp)
-    }
-  );
+  const getCandles = (timeFrom) =>
+    finnhubClient.stockCandles(
+      id,
+      "D",
+      timeFrom,
+      timeNow,
+      (error, data, response) => {
+        console.log(data);
+        const days = data.t;
+        const daysFormatted = days.map((day) => {
+          const dayFormatted = new Date(day * 1000);
+          return dayFormatted.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          });
+        });
+        const highs = data.h;
+        const lows = data.l;
+        let chartTemp = daysFormatted.map((x, index) => [
+          x,
+          highs[index],
+          lows[index],
+        ]);
+        chartTemp.unshift(["Date", "High", "Low"]);
+        console.log(chartTemp);
+        setChartData(chartTemp);
+      }
+    );
 
   const handleSelect = (event) => {
     if (event.target.value === "week") {
-      getCandles(timeNow-604800)
+      getCandles(timeNow - 604800);
     }
     if (event.target.value === "month") {
       getCandles(timeNow - 2628000);
@@ -78,9 +80,13 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
 
   useEffect(() => {
     if (stockDetails.length > 0) {
-    let chartTemp = stockDetails.t.map((x, index) => [x, stockDetails.h[index]])
-    console.log(chartTemp)
-}}, [stockDetails])
+      let chartTemp = stockDetails.t.map((x, index) => [
+        x,
+        stockDetails.h[index],
+      ]);
+      console.log(chartTemp);
+    }
+  }, [stockDetails]);
 
   const date = new Date(companyProfile.ipo);
   const formattedDate = date.toLocaleDateString("en-GB", {
@@ -90,10 +96,10 @@ const ShareDetails = ({ handlePortfolioSubmit}) => {
   });
 
   const handleChange = (event) => {
-    const numberOfShares = event.target.value
-    console.log(numberOfShares)
-    setNumberOfShares(numberOfShares)
-  }
+    const numberOfShares = event.target.value;
+    console.log(numberOfShares);
+    setNumberOfShares(numberOfShares);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
