@@ -53,11 +53,11 @@ const FilterBox = ({ onFilter }) => {
 
   useEffect(() => {
     onFilter(searchTerm);
-  }, [searchTerm, onFilter]);
+  }, [searchTerm]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  // };
 
   const clearSearch = () => {
     setSearchTerm("");
@@ -65,7 +65,7 @@ const FilterBox = ({ onFilter }) => {
 
   return (
     <FilterBoxContainer>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
         <FilterInput
           type="text"
           placeholder="Search for stock..."
@@ -75,7 +75,7 @@ const FilterBox = ({ onFilter }) => {
         <ClearButton type="button" onClick={clearSearch}>
           Clear Filter
         </ClearButton>
-      </form>
+      {/* </form> */}
     </FilterBoxContainer>
   );
 };

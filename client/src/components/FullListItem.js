@@ -15,13 +15,14 @@ const ListItem = styled.li`
   height: 30px;
 `;
 
-const ShareName = styled.p`
-  font-size: 12px;
-  color: #666;
-
-  flex-grow: 1;
-  text-align: center;
+const ShareName = styled(Link)`
   text-decoration: none;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  flex-grow: 1;
 `;
 
 const SymbolWrapper = styled.div`
@@ -66,14 +67,14 @@ const SymbolText = styled(Link)`
 `;
 
 const FullListItem = ({ share }) => {
-  const { name, symbol } = share;
+  const { name, ticker } = share;
 
   return (
     <ListItem>
       <SymbolWrapper>
-      <SymbolText to={`/${share.symbol}`}>{symbol}</SymbolText>
+      <SymbolText to={`/${share.ticker}`}>{ticker}</SymbolText>
       </SymbolWrapper>
-      <ShareName>{name}</ShareName>
+      <ShareName to={`/${share.ticker}`}>{name}</ShareName>
     </ListItem>
   );
 };

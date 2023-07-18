@@ -27,7 +27,7 @@ const ShareDetails = () => {
     );
   }, []);
 
-  const getCandles = () => finnhubClient.stockCandles(
+  const getCandles = (timeFrom) => finnhubClient.stockCandles(
     id,
     "D",
     timeFrom,
@@ -41,25 +41,15 @@ const ShareDetails = () => {
   const handleSelect = (event) => {
     if (event.target.value === "week") {
       getCandles(timeNow-604800)
-      // finnhubClient.stockCandles(
-      //   id,
-      //   "D",
-      //   timeNow - 604800,
-      //   timeNow,
-      //   (error, data, response) => {
-      //     console.log(data);
-      //     setStockDetails(data);
-      //   }
-      // );
     }
     if (event.target.value === "month") {
-      setTimeFrom(timeNow - 2628000);
+      getCandles(timeNow - 2628000);
     } else if (event.target.value === "3month") {
-      setTimeFrom(timeNow - 7884000);
+      getCandles(timeNow - 7884000);
     } else if (event.target.value === "6month") {
-      setTimeFrom(timeNow - 15768000);
+      getCandles(timeNow - 15768000);
     } else if (event.target.value === "year") {
-      setTimeFrom(timeNow - 31536000);
+      getCandles(timeNow - 31536000);
     }
   };
 
@@ -73,6 +63,11 @@ const ShareDetails = () => {
   const handleChange = (event) => {
     const numberOfShares = event.target.value
     console.log(numberOfShares)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // handlePortfolioSubmit({"symbol": id, "name": stockDetails.name, "numberOfShares": numberOfShares})
   }
 
   return (
@@ -90,9 +85,9 @@ const ShareDetails = () => {
         <img src={stockDetails.logo} />
         <h1>{stockDetails.name}</h1>
         <p>{stockDetails.ticker}</p>
-        <form onChange={handleChange}>
+        <form onChange={handleChange} onSubmit={handleSubmit}>
           <input type="number" placeholder="Number of Shares" />
-        <button>Buy Shares</button>
+          <input type="submit" value="Buy Shares"></input>
         </form>
         <p>IPO: {formattedDate}</p>
         <p>Market Capitalisation: {stockDetails.marketCapitalization}</p>

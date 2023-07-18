@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FullListItem from "./FullListItem";
 import FilterBox from "./FilterBox";
 import styled from "styled-components";
@@ -10,15 +10,18 @@ const ListContainer = styled.div`
 `;
 
 const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
-  const fullListItems = fullStocks.map((stock) => (
+
+  const [filteredStocks, setFilteredStocks] = useState(stocks)
+
+  const fullListItems = filteredStocks.map((stock) => (
     <FullListItem key={stock.ticker} share={stock} />
   ));
 
   const handleFilter = (filterText) => {
-    const filteredStocks = stocks.filter((stock) => {
+    const filteredTemp = fullStocks.filter((stock) => {
       return stock.name.toLowerCase().includes(filterText.toLowerCase());
     });
-    setFullStocks(filteredStocks);
+    setFilteredStocks(filteredTemp);
   };
 
   return (
