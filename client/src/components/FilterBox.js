@@ -3,18 +3,17 @@ import styled from "styled-components";
 
 const FilterBoxContainer = styled.div`
   display: flex;
-  justify-content: center;
-  margin-left: 39px; 
+  justify-content: space-between;
+  margin-left: 39px;
   position: fixed;
   margin-top: 560px;
   z-index: 1;
-  /* width: 100%; */
 
   @media (max-width: 500px) {
     display: flex;
     justify-content: start;
     position: fixed;
-    margin-top: 20px;
+    margin-top: 0px;
     z-index: 1;
     width: 100%;
   }
@@ -28,7 +27,7 @@ const FilterInput = styled.input`
 
   @media (max-width: 500px) {
     padding: 10px;
-  width: 150px;
+    width: 190px;
     border: 2px solid #ccc;
     border-radius: 30px;
   }
@@ -44,6 +43,14 @@ const ClearButton = styled.button`
   cursor: pointer;
 `;
 
+const Container = styled.div`
+  display: flex;
+  align-items: bottom;
+  justify-content: space-between;
+  /* margin-bottom: 8px; */
+  border-radius: 40px;
+`;
+
 const FilterBox = ({ onFilter }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -55,17 +62,13 @@ const FilterBox = ({ onFilter }) => {
     onFilter(searchTerm);
   }, [searchTerm]);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  // };
-
   const clearSearch = () => {
     setSearchTerm("");
   };
 
   return (
-    <FilterBoxContainer>
-      {/* <form onSubmit={handleSubmit}> */}
+    <Container>
+      <FilterBoxContainer>
         <FilterInput
           type="text"
           placeholder="Search for stock..."
@@ -75,8 +78,8 @@ const FilterBox = ({ onFilter }) => {
         <ClearButton type="button" onClick={clearSearch}>
           Clear Filter
         </ClearButton>
-      {/* </form> */}
-    </FilterBoxContainer>
+      </FilterBoxContainer>
+    </Container>
   );
 };
 
