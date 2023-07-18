@@ -65,11 +65,11 @@ function App() {
       });
   }, []);
 
-  const handleGetCandles = (symbol, timeFrom ) => {
-    const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
-    setCandles(newCandles);
-    console.log(newCandles);
-  };
+  // const handleGetCandles = (symbol, timeFrom ) => {
+  //   const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
+  //   setCandles(newCandles);
+  //   console.log(newCandles);
+  // };
 
   return (
     <Router>
@@ -82,7 +82,6 @@ function App() {
               element={
                 <ShareDetails
                   timeNow={timeNow}
-                  handleGetCandles={handleGetCandles}
                 />
               }
             />
