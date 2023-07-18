@@ -69,12 +69,21 @@ function App() {
   }, []);
 
   const handlePortfolioSubmit = newItem => {
-    fetch('http://localhost:9000/api/portfolio', {
+    const symbolArray = portfolio.map(item => item.symbol )
+    if (symbolArray.includes(newItem.symbol)) {
+      const index = portfolio.findIndex(item => item.symbol === newItem.symbol);
+      const heldShares = parseInt(portfolio[index].numberOfShares);
+      const shareID = portfolio[index]._id
+      console.log(shareID)
+      newItem.numberOfShares = parseInt(newItem.numberOfShares) + heldShares;
+      ShareService.updatePortfolioStock({id: shareID, symbol: newItem.symbol, name: newItem.name,  numberOfShares: newItem.numberOfShares})
+    } else
+    {fetch('http://localhost:9000/api/portfolio', {
       method: 'POST',
       body: JSON.stringify(newItem),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(() => ShareService.getPortfolioStocks())
+      .then(() => ShareService.getPortfolioStocks())}
   }
 
   // const handleGetCandles = (symbol, timeFrom ) => {

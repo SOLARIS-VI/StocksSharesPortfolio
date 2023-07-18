@@ -104,7 +104,7 @@ const ShareDetails = ({ handlePortfolioSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePortfolioSubmit({"symbol": id, "name": companyProfile.name, "numberOfShares": numberOfShares})
-    window.location.reload()
+    window.location.replace("http://localhost:3000/portfolio")
   }
 
   const options = {hAxis: {ticks: [30, 60, 90, 120, 150]} }
