@@ -68,16 +68,35 @@ const ShareWrapper = styled.div`
   border-radius: 40px;
 `;
 
-const PortfolioItem = ({ share }) => {
-  const { name, symbol, numberOfShares } = share;
+
+const DeleteButton = styled.button`
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 12px;
+  cursor: pointer;
+`;
+
+const PortfolioItem = ({ share, handleDelete }) => {
+  // const { name, symbol, numberOfShares } = share;
+
+  const handleClick = () => {
+    handleDelete(share);
+    console.log(share)
+  };
+
+
   return (
     <ListItem>
       <SymbolWrapper>
-        <SymbolText to={`/${symbol}`}>{symbol}</SymbolText>
+        <SymbolText to={`/${share.symbol}`}>{share.symbol}</SymbolText>
       </SymbolWrapper>
-      <ShareName to={`/${symbol}`}>{name}</ShareName>
+      <ShareName to={`/${share.symbol}`}>{share.name}</ShareName>
       <ShareWrapper>
-        <b>No. of Shares: {numberOfShares}</b>
+        <p>No. of Shares: {share.numberOfShares}</p>
+        <DeleteButton onClick={handleClick}>Delete</DeleteButton>
       </ShareWrapper>
     </ListItem>
   );

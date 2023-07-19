@@ -88,6 +88,16 @@ function App() {
       .then(() => ShareService.getPortfolioStocks())}
   }
 
+
+  const handleDelete = (removedItem) => {
+    ShareService.deletePortfolioStock(removedItem);
+    const updatedPortfolio = portfolio.filter((item) => {
+      return item.symbol != removedItem.symbol 
+    });
+    setPortfolio(updatedPortfolio);
+  }
+
+
   return (
     <Router>
       <Navbar />
@@ -103,7 +113,7 @@ function App() {
               }
             />
             <Route path="/" element={<ShareList stocks={stocks} />} />
-            <Route path="/portfolio" element={<PortfolioList portfolio={portfolio} />} />
+            <Route path="/portfolio" element={<PortfolioList portfolio={portfolio} handleDelete={handleDelete} />} />
             <Route
               path="/fullList"
               element={

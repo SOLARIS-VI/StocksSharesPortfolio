@@ -19,7 +19,7 @@ const createRouter = function (collection) {
 
   // SHOW
   router.get("/:id", (request, response) => {
-    const id = request.params.id;
+    const id = request.body.id;
     collection
       .findOne({ _id: new ObjectId(id) })
       .then((docs) => response.json(docs))
@@ -48,7 +48,7 @@ const createRouter = function (collection) {
 
   // DELETE
   router.delete("/:id", (request, response) => {
-    const id = request.params.id;
+    const id = request.body._id;
     collection
       .deleteOne({ _id: new ObjectId(id) })
       .then((result) => {
@@ -64,7 +64,6 @@ const createRouter = function (collection) {
   // UPDATE
   router.put("/:id", (request, response) => {
     const id = request.body.id;
-    console.log(id)
     const updatedData = request.body;
     collection
       .updateOne({ _id: new ObjectId(id) }, { $set: updatedData })
