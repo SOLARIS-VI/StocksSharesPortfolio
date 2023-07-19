@@ -53,7 +53,7 @@ const BuildingContainer = styled.div`
 `;
 
 const Stack = styled.div`
-  margin-right: 70px;
+  margin-right: 53px;
   @media (max-width: 500px) {
     
   }

@@ -43,7 +43,7 @@ const BuildingColumns = styled.div`
 
 const BuildingContainer = styled.div`
   position: absolute;
-  left: 49.5%;
+  left: 49%;
   transform: translateX(-50%);
 
   @media (max-width: 500px) {
@@ -52,7 +52,7 @@ const BuildingContainer = styled.div`
 `;
 
 const Info = styled.div`
-  margin-right: 40px;
+  margin-right: 47px;
 @media (max-width: 500px) {
     display: none;
 }

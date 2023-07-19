@@ -30,12 +30,13 @@ const SymbolWrapper = styled.div`
 const ShareName = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   text-align: center;
   flex-grow: 1;
   transition: all 0.5s;
+  font-family: 'Courier New', Courier, monospace;
 
   &:hover {
     color: grey;
@@ -46,10 +47,11 @@ const ShareName = styled(Link)`
 const SymbolText = styled(Link)`
   text-decoration: none;
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   transition: all 0.5s;
+  font-family: 'Courier New', Courier, monospace;
 
   &:hover {
     color: grey;
