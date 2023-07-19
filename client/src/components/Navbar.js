@@ -7,8 +7,6 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faListUl } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const Nav = styled.nav`
   background-color: black;
   color: #fff;
@@ -18,7 +16,6 @@ const Nav = styled.nav`
   position: fixed;
   height: 90%;
   border-radius: 20px;
-  
 
   @media (max-width: 500px) {
     position: static;
@@ -129,7 +126,7 @@ const Title = styled.h1`
   color: white;
   text-align: ${({ $isopen }) => ($isopen ? "left" : "center")};
   font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", Courier, monospace;
 
   @media (max-width: 500px) {
     display: ${({ $isopen }) => ($isopen ? "none" : "block")};
@@ -162,6 +159,7 @@ const IconText = styled.span`
   left: 50%;
   transform: translateX(-50%);
   font-size: 2px;
+  font-family: 'Courier New', Courier, monospace;
 `;
 
 const IconContainer = styled.div`
