@@ -49,12 +49,12 @@ const BuildingContainer = styled.div`
   transform: translateX(-50%);
 
   @media (max-width: 500px) {
-    left: 41%;
+    left: 44%;
   }
 `;
 
 const Stack = styled.div`
-  margin-right: 53px;
+  margin-right: 80px;
   @media (max-width: 500px) {
     
   }

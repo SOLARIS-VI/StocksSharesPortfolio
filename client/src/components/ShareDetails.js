@@ -9,7 +9,6 @@ const ContentContainer = styled.div`
   flex: 1;
   padding: 10px;
   margin-left: 30px;
-  /* width: 100%; */
 
   @media (max-width: 500px) {
     margin-left: 0;
@@ -26,7 +25,6 @@ const TopRowContainer = styled.div`
 
   h1 {
     margin-right: 10px;
-    font-family: "Courier New", Courier, monospace;
 
     @media (max-width: 500px) {
       font-size: 22px;
@@ -35,7 +33,6 @@ const TopRowContainer = styled.div`
 
   h4 {
     margin-right: 10px;
-    font-family: "Courier New", Courier, monospace;
     @media (max-width: 500px) {
       font-size: 15px;
     }
