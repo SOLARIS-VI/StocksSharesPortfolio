@@ -11,9 +11,11 @@ import ShareDetails from "./components/ShareDetails";
 import FilterBox from "./components/FilterBox";
 const finnhub = require("finnhub");
 const finnhubClient = new finnhub.DefaultApi();
+
 const AppContainer = styled.div`
   display: flex;
 `;
+
 const ContentContainer = styled.div`
   flex: 1;
   padding: 10px;
@@ -25,9 +27,9 @@ const ContentContainer = styled.div`
     align-items: flex-start;
   }
 `;
+
 function App() {
   const [timeNow, setTimeNow] = useState(0);
-  // const [timeFrom, setTimeFrom] = useState(0);
   const [symbol, setSymbol] = useState("APPL");
   const [stocks, setStocks] = useState([]);
   const [fullStocks, setFullStocks] = useState([]);
@@ -69,13 +71,23 @@ function App() {
   }, []);
 
   const handlePortfolioSubmit = newItem => {
-    fetch('http://localhost:9000/api/portfolio', {
+    const symbolArray = portfolio.map(item => item.symbol )
+    if (symbolArray.includes(newItem.symbol)) {
+      const index = portfolio.findIndex(item => item.symbol === newItem.symbol);
+      const heldShares = parseInt(portfolio[index].numberOfShares);
+      const shareID = portfolio[index]._id
+      console.log(shareID)
+      newItem.numberOfShares = parseInt(newItem.numberOfShares) + heldShares;
+      ShareService.updatePortfolioStock({id: shareID, symbol: newItem.symbol, name: newItem.name,  numberOfShares: newItem.numberOfShares})
+    } else
+    {fetch('http://localhost:9000/api/portfolio', {
       method: 'POST',
       body: JSON.stringify(newItem),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(() => ShareService.getPortfolioStocks())
+      .then(() => ShareService.getPortfolioStocks())}
   }
+
 
   const handleDelete = (removedItem) => {
     ShareService.deletePortfolioStock(removedItem);
@@ -85,11 +97,6 @@ function App() {
     setPortfolio(updatedPortfolio);
   }
 
-  // const handleGetCandles = (symbol, timeFrom ) => {
-  //   const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
-  //   setCandles(newCandles);
-  //   console.log(newCandles);
-  // };
 
   return (
     <Router>

@@ -1,7 +1,12 @@
 
-import React from 'react';
-import PortfolioItem from './PortfolioItem';
-import styled from 'styled-components';
+import React from "react";
+import PortfolioItem from "./PortfolioItem";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons";
+import { faCubesStacked } from "@fortawesome/free-solid-svg-icons";
+
 
 const ListContainer = styled.div`
   margin-top: 10px;
@@ -34,11 +39,31 @@ const Label = styled.label`
   }
 `;
 
-const PortfolioListWrapper = styled(ListContainer)`
-  /* Add any additional styles specific to the PortfolioList here */
+const BuildingColumns = styled.div`
+  margin-left: 34px;
 `;
 
+
 const PortfolioList = ({ portfolio, handleDelete }) => {
+
+const BuildingContainer = styled.div`
+  position: absolute;
+  left: 54.5%;
+  transform: translateX(-50%);
+
+  @media (max-width: 500px) {
+    left: 41%;
+  }
+`;
+
+const Stack = styled.div`
+  margin-right: 53px;
+  @media (max-width: 500px) {
+    
+  }
+`;
+
+const PortfolioListWrapper = styled(ListContainer)``;
 
 
   const portfolioNodes = portfolio.map((portfolioItem) => (
@@ -53,7 +78,20 @@ const PortfolioList = ({ portfolio, handleDelete }) => {
 
   return (
     <>
-      <Label></Label>
+      <Label>
+        <BuildingColumns>
+          <FontAwesomeIcon
+            icon={faBuildingColumns}
+            style={{ color: "#ffffff" }}
+          />
+        </BuildingColumns>
+        <BuildingContainer>
+          <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
+        </BuildingContainer>
+        <Stack>
+          <FontAwesomeIcon icon={faCubesStacked} style={{ color: "#ffffff" }} />{" "}
+        </Stack>
+      </Label>
       <PortfolioListWrapper>
         <ul>{portfolioNodes}</ul>
       </PortfolioListWrapper>

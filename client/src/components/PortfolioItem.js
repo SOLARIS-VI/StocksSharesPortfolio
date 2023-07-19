@@ -18,41 +18,32 @@ const ListItem = styled.li`
 const ShareName = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   text-align: center;
   flex-grow: 1;
+  transition: all 0.5s;
+  font-family: 'Courier New', Courier, monospace;
+
+  &:hover {
+    color: grey;
+    transform: scale(1.5);
+  }
 `;
 
 const SymbolText = styled(Link)`
   text-decoration: none;
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
+  transition: all 0.5s;
+  font-family: 'Courier New', Courier, monospace;
 
   &:hover {
     color: grey;
-  }
-
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    background: black;
-    height: 1px;
-    transition: width 0.5s;
-  }
-
-  &:hover:after {
-    background-color: grey;
-    width: 100%;
+    transform: scale(1.5);
   }
 `;
 
@@ -70,12 +61,13 @@ const ShareWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 160px;
-  background-color: grey;
+  width: 125px;
+  background-color: darkgrey;
   height: 50px;
   font-size: 12px;
   border-radius: 40px;
 `;
+
 
 const DeleteButton = styled.button`
   background-color: white;
@@ -94,6 +86,7 @@ const PortfolioItem = ({ share, handleDelete }) => {
     handleDelete(share);
     console.log(share)
   };
+
 
   return (
     <ListItem>

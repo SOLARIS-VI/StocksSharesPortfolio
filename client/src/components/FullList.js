@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FullListItem from "./FullListItem";
 import FilterBox from "./FilterBox";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const ListContainer = styled.div`
   margin-top: 10px;
@@ -32,7 +33,6 @@ const Label = styled.label`
 
   @media (max-width: 500px) {
     max-height: calc(100vh - 140px);
-    margin-top: 50px;
     margin-right: 30px;
   }
 `;
@@ -43,7 +43,7 @@ const BuildingColumns = styled.div`
 
 const BuildingContainer = styled.div`
   position: absolute;
-  left: 54%;
+  left: 49%;
   transform: translateX(-50%);
 
   @media (max-width: 500px) {
@@ -51,12 +51,33 @@ const BuildingContainer = styled.div`
   }
 `;
 
+const Info = styled.div`
+  margin-right: 48px;
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
 const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
   const [filteredStocks, setFilteredStocks] = useState(stocks);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const fullListItems = filteredStocks.map((stock) => (
     <FullListItem key={stock.ticker} share={stock} />
   ));
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 500);
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleFilter = (filterText) => {
     const filteredTemp = fullStocks.filter((stock) => {
@@ -67,7 +88,6 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
 
   return (
     <>
-      <FilterBox onFilter={handleFilter} />
       <Label>
         <BuildingColumns>
           <FontAwesomeIcon
@@ -78,10 +98,15 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
         <BuildingContainer>
           <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
         </BuildingContainer>
+        <Info>
+          <FontAwesomeIcon icon={faCircleInfo} style={{ color: "#ffffff" }} />
+        </Info>
       </Label>
+      {isSmallScreen && <FilterBox onFilter={handleFilter} />}{" "}
       <ListContainer>
         <ul>{fullListItems}</ul>
       </ListContainer>
+      {!isSmallScreen && <FilterBox onFilter={handleFilter} />}{" "}
     </>
   );
 };

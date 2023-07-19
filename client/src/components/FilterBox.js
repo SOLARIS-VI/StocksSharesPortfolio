@@ -3,34 +3,27 @@ import styled from "styled-components";
 
 const FilterBoxContainer = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-left: 39px;
-  position: fixed;
-  margin-top: 560px;
+  margin-bottom: 8px;
+  border-radius: 40px;
+  margin-left: 40px;
+  width: 100%;
+  margin-top: 20px;
+  height: 30px;
+  position: relative;
   z-index: 1;
 
   @media (max-width: 500px) {
-    display: flex;
-    justify-content: start;
-    position: fixed;
-    margin-top: 0px;
-    z-index: 1;
-    width: 100%;
+    margin-right: 30px;
   }
 `;
 
 const FilterInput = styled.input`
   padding: 10px;
-  width: 800px;
+  width: 100%;
   border: 2px solid #ccc;
   border-radius: 30px;
-
-  @media (max-width: 500px) {
-    padding: 10px;
-    width: 190px;
-    border: 2px solid #ccc;
-    border-radius: 30px;
-  }
 `;
 
 const ClearButton = styled.button`
@@ -41,13 +34,18 @@ const ClearButton = styled.button`
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    color: white;
+    transform: scale(1.1);
+  }
 `;
 
 const Container = styled.div`
   display: flex;
   align-items: bottom;
   justify-content: space-between;
-  /* margin-bottom: 8px; */
   border-radius: 40px;
 `;
 

@@ -59,48 +59,6 @@ const NavMenuItem = styled.li`
   }
 `;
 
-const NavLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-
-  &:hover {
-    color: #555;
-  }
-
-  @media (max-width: 500px) {
-    margin-inline-end: 0;
-    margin-bottom: 10px;
-  }
-`;
-
-const StyledNavLink = styled(NavLink)`
-  position: relative;
-  transition: all 0.5s;
-
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    background: #aaa;
-    height: 1px;
-    transition: width 0.5s;
-  }
-
-  &:hover {
-    color: grey;
-  }
-
-  &:hover:after {
-    background-color: grey;
-    width: 100%;
-  }
-`;
-
 const OpenButton = styled.span`
   font-size: 30px;
   color: black;
@@ -168,8 +126,7 @@ const Title = styled.h1`
   color: white;
   text-align: ${({ $isopen }) => ($isopen ? "left" : "center")};
   font-size: 30px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Courier New", Courier, monospace;
 
   @media (max-width: 500px) {
     display: ${({ $isopen }) => ($isopen ? "none" : "block")};
@@ -188,10 +145,21 @@ const LogoImage = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 
   @media (max-width: 500px) {
     display: none;
   }
+`;
+
+const IconText = styled.span`
+  display: none;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2px;
+  font-family: 'Courier New', Courier, monospace;
 `;
 
 const IconContainer = styled.div`
@@ -201,6 +169,19 @@ const IconContainer = styled.div`
   &:hover {
     color: grey;
     transform: scale(2);
+
+    ${IconText} {
+      display: block;
+      color: white;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
   }
 
   &:hover:after {
@@ -249,12 +230,12 @@ const Navbar = () => {
         </>
       )}
       <Title>COPIA</Title>
-
       <NavMenu $isopen={isopen}>
         <NavMenuItem>
           <Link to="/">
             <IconContainer>
               <FontAwesomeIcon icon={faHouse} style={{ color: "#ffffff" }} />
+              <IconText>Home</IconText>
             </IconContainer>
           </Link>
         </NavMenuItem>
@@ -262,6 +243,7 @@ const Navbar = () => {
           <Link to="/portfolio">
             <IconContainer>
               <FontAwesomeIcon icon={faWallet} style={{ color: "#ffffff" }} />
+              <IconText>Portfolio</IconText>
             </IconContainer>
           </Link>
         </NavMenuItem>
@@ -269,12 +251,10 @@ const Navbar = () => {
           <Link to="/fullList">
             <IconContainer>
               <FontAwesomeIcon icon={faListUl} style={{ color: "#ffffff" }} />
+              <IconText>Full List</IconText>
             </IconContainer>
           </Link>
         </NavMenuItem>
-        {/* <NavMenuItem>
-          <StyledNavLink to="/fullList">Full List</StyledNavLink>
-        </NavMenuItem> */}
         <LogoImage src={logoImage} alt="Copia Logo" />
       </NavMenu>
     </Nav>
