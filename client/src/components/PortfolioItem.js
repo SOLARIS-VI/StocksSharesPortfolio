@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
 const ListItem = styled.li`
   display: flex;
   align-items: center;
@@ -24,6 +23,12 @@ const ShareName = styled(Link)`
   position: relative;
   text-align: center;
   flex-grow: 1;
+  transition: all 0.5s;
+
+  &:hover {
+    color: grey;
+    transform: scale(1.5);
+  }
 `;
 
 const SymbolText = styled(Link)`
@@ -32,28 +37,11 @@ const SymbolText = styled(Link)`
   font-size: 12px;
   font-weight: bold;
   position: relative;
+  transition: all 0.5s;
 
   &:hover {
     color: grey;
-  }
-
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    background: black;
-    height: 1px;
-    transition: width 0.5s;
-  }
-
-  &:hover:after {
-    background-color: grey;
-    width: 100%;
+    transform: scale(1.5);
   }
 `;
 
@@ -71,15 +59,15 @@ const ShareWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 160px;
-  background-color: grey;
+  width: 125px;
+  background-color: darkgrey;
   height: 50px;
   font-size: 12px;
   border-radius: 40px;
 `;
 
 const PortfolioItem = ({ share }) => {
-  const { name, symbol, numberOfShares } = share; 
+  const { name, symbol, numberOfShares } = share;
   return (
     <ListItem>
       <SymbolWrapper>
@@ -87,11 +75,10 @@ const PortfolioItem = ({ share }) => {
       </SymbolWrapper>
       <ShareName to={`/${symbol}`}>{name}</ShareName>
       <ShareWrapper>
-        <p>No. of Shares: {numberOfShares}</p>
+        <b>No. of Shares: {numberOfShares}</b>
       </ShareWrapper>
     </ListItem>
   );
 };
 
 export default PortfolioItem;
-

@@ -7,6 +7,8 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faListUl } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const Nav = styled.nav`
   background-color: black;
   color: #fff;
@@ -16,6 +18,7 @@ const Nav = styled.nav`
   position: fixed;
   height: 90%;
   border-radius: 20px;
+  
 
   @media (max-width: 500px) {
     position: static;
@@ -56,20 +59,6 @@ const NavMenuItem = styled.li`
 
   @media (max-width: 500px) {
     margin-bottom: 20px;
-  }
-`;
-
-const NavLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-
-  &:hover {
-    color: #555;
-  }
-
-  @media (max-width: 500px) {
-    margin-inline-end: 0;
-    margin-bottom: 10px;
   }
 `;
 
@@ -140,8 +129,7 @@ const Title = styled.h1`
   color: white;
   text-align: ${({ $isopen }) => ($isopen ? "left" : "center")};
   font-size: 30px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 
   @media (max-width: 500px) {
     display: ${({ $isopen }) => ($isopen ? "none" : "block")};
@@ -160,10 +148,20 @@ const LogoImage = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 
   @media (max-width: 500px) {
     display: none;
   }
+`;
+
+const IconText = styled.span`
+  display: none;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2px;
 `;
 
 const IconContainer = styled.div`
@@ -173,6 +171,19 @@ const IconContainer = styled.div`
   &:hover {
     color: grey;
     transform: scale(2);
+
+    ${IconText} {
+      display: block;
+      color: white;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
   }
 
   &:hover:after {
@@ -221,12 +232,12 @@ const Navbar = () => {
         </>
       )}
       <Title>COPIA</Title>
-
       <NavMenu $isopen={isopen}>
         <NavMenuItem>
           <Link to="/">
             <IconContainer>
               <FontAwesomeIcon icon={faHouse} style={{ color: "#ffffff" }} />
+              <IconText>Home</IconText>
             </IconContainer>
           </Link>
         </NavMenuItem>
@@ -234,6 +245,7 @@ const Navbar = () => {
           <Link to="/portfolio">
             <IconContainer>
               <FontAwesomeIcon icon={faWallet} style={{ color: "#ffffff" }} />
+              <IconText>Portfolio</IconText>
             </IconContainer>
           </Link>
         </NavMenuItem>
@@ -241,6 +253,7 @@ const Navbar = () => {
           <Link to="/fullList">
             <IconContainer>
               <FontAwesomeIcon icon={faListUl} style={{ color: "#ffffff" }} />
+              <IconText>Full List</IconText>
             </IconContainer>
           </Link>
         </NavMenuItem>

@@ -34,13 +34,18 @@ const ClearButton = styled.button`
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    color: white;
+    transform: scale(1.1);
+  }
 `;
 
 const Container = styled.div`
   display: flex;
   align-items: bottom;
   justify-content: space-between;
-  /* margin-bottom: 8px; */
   border-radius: 40px;
 `;
 
