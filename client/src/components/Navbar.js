@@ -29,12 +29,13 @@ const Nav = styled.nav`
 `;
 
 const NavMenu = styled.ul`
-  display: flex;
+ display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   list-style-type: none;
-  margin-top: 90px;
   padding-left: 0%;
+
 
   @media (max-width: 500px) {
     display: ${({ $isopen }) => ($isopen ? "flex" : "none")};
@@ -48,11 +49,12 @@ const NavMenu = styled.ul`
 `;
 
 const NavMenuItem = styled.li`
-  margin-bottom: 60px;
   align-items: center;
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-top: 60px;
+  margin-bottom: 100px;
 
   @media (max-width: 500px) {
     margin-bottom: 20px;
@@ -63,8 +65,8 @@ const OpenButton = styled.span`
   font-size: 30px;
   color: black;
   cursor: pointer;
-  top: 0px;
-  left: 20px;
+  top: 1px;
+  left: 50px;
   position: relative;
 
   &:hover {
@@ -126,14 +128,13 @@ const Title = styled.h1`
   color: white;
   text-align: ${({ $isopen }) => ($isopen ? "left" : "center")};
   font-size: 30px;
-  font-family: "Courier New", Courier, monospace;
 
   @media (max-width: 500px) {
     display: ${({ $isopen }) => ($isopen ? "none" : "block")};
     position: absolute;
     color: black;
-    top: 12px;
-    right: 40px;
+    top: 15px;
+    right: 50px;
     margin: 0;
     padding: 0;
   }
@@ -145,7 +146,10 @@ const LogoImage = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  position: absolute;
+  bottom: 10px; 
+  left: 50%;
+  transform: translateX(-50%);
 
   @media (max-width: 500px) {
     display: none;

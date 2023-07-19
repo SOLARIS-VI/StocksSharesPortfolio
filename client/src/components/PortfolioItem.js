@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const ListItem = styled.li`
   display: flex;
@@ -24,7 +26,7 @@ const ShareName = styled(Link)`
   text-align: center;
   flex-grow: 1;
   transition: all 0.5s;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 
   &:hover {
     color: grey;
@@ -39,7 +41,7 @@ const SymbolText = styled(Link)`
   font-weight: bold;
   position: relative;
   transition: all 0.5s;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 
   &:hover {
     color: grey;
@@ -60,33 +62,46 @@ const SymbolWrapper = styled.div`
 const ShareWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 125px;
+  justify-content: space-between;
+  width: 160px;
   background-color: darkgrey;
   height: 50px;
   font-size: 12px;
   border-radius: 40px;
 `;
 
-
 const DeleteButton = styled.button`
-  background-color: white;
-  color: black;
-  border: 2px solid black;
-  border-radius: 8px;
-  padding: 8px 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 0px 40px 40px 0px; 
+  padding: 18px 10px;
+  height: 50px;
   font-size: 12px;
   cursor: pointer;
 `;
 
-const PortfolioItem = ({ share, handleDelete }) => {
-  // const { name, symbol, numberOfShares } = share;
 
+const Icon = styled.div`
+transition: all 0.5s;
+margin-right: 2px;
+
+&:hover {
+  color: grey;
+  transform: scale(2);
+}
+`
+
+const Text = styled.p`
+margin-left: 15px;
+font-weight: bold;
+`
+
+const PortfolioItem = ({ share, handleDelete }) => {
   const handleClick = () => {
     handleDelete(share);
-    console.log(share)
+    console.log(share);
   };
-
 
   return (
     <ListItem>
@@ -95,8 +110,12 @@ const PortfolioItem = ({ share, handleDelete }) => {
       </SymbolWrapper>
       <ShareName to={`/${share.symbol}`}>{share.name}</ShareName>
       <ShareWrapper>
-        <p>No. of Shares: {share.numberOfShares}</p>
-        <DeleteButton onClick={handleClick}>Delete</DeleteButton>
+        <Text>No. of Shares: {share.numberOfShares}</Text>
+      <DeleteButton onClick={handleClick}>
+        <Icon>
+          <FontAwesomeIcon icon={faTrashCan} style={{ color: "#ffffff" }} />
+        </Icon>
+      </DeleteButton>
       </ShareWrapper>
     </ListItem>
   );

@@ -36,7 +36,6 @@ const ShareName = styled(Link)`
   text-align: center;
   flex-grow: 1;
   transition: all 0.5s;
-  font-family: 'Courier New', Courier, monospace;
 
   &:hover {
     color: grey;
@@ -51,7 +50,6 @@ const SymbolText = styled(Link)`
   font-weight: bold;
   position: relative;
   transition: all 0.5s;
-  font-family: 'Courier New', Courier, monospace;
 
   &:hover {
     color: grey;
