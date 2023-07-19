@@ -1,4 +1,4 @@
-// /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/components/PortfolioList.js
+
 import React from 'react';
 import PortfolioItem from './PortfolioItem';
 import styled from 'styled-components';
@@ -38,10 +38,18 @@ const PortfolioListWrapper = styled(ListContainer)`
   /* Add any additional styles specific to the PortfolioList here */
 `;
 
-const PortfolioList = ({ portfolio }) => {
+const PortfolioList = ({ portfolio, handleDelete }) => {
+
+
   const portfolioNodes = portfolio.map((portfolioItem) => (
-    <PortfolioItem key={portfolioItem.id} share={portfolioItem} />
+    <PortfolioItem
+      key={portfolioItem.id}
+      share={portfolioItem}
+      handleDelete={handleDelete}
+    />
   ));
+
+  
 
   return (
     <>

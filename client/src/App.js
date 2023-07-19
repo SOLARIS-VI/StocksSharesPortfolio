@@ -77,6 +77,14 @@ function App() {
       .then(() => ShareService.getPortfolioStocks())
   }
 
+  const handleDelete = (removedItem) => {
+    ShareService.deletePortfolioStock(removedItem);
+    const updatedPortfolio = portfolio.filter((item) => {
+      return item.symbol != removedItem.symbol 
+    });
+    setPortfolio(updatedPortfolio);
+  }
+
   // const handleGetCandles = (symbol, timeFrom ) => {
   //   const newCandles = api_auth.getStockCandles(symbol, "D", timeFrom, timeNow);
   //   setCandles(newCandles);
@@ -98,7 +106,7 @@ function App() {
               }
             />
             <Route path="/" element={<ShareList stocks={stocks} />} />
-            <Route path="/portfolio" element={<PortfolioList portfolio={portfolio} />} />
+            <Route path="/portfolio" element={<PortfolioList portfolio={portfolio} handleDelete={handleDelete} />} />
             <Route
               path="/fullList"
               element={
