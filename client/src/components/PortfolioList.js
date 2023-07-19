@@ -66,11 +66,11 @@ z-index: -1;
 `
 const PortfolioListWrapper = styled(ListContainer)``;
 
-const PortfolioList = ({ portfolio }) => {
+const PortfolioList = ({ portfolio, handleDelete }) => {
   const [chartData, setChartData] = useState([]);
 
   const portfolioNodes = portfolio.map((portfolioItem) => (
-    <PortfolioItem key={portfolioItem.id} share={portfolioItem} />
+    <PortfolioItem key={portfolioItem.id} share={portfolioItem} handleDelete={handleDelete} />
   ));
 
   useEffect(() => {
