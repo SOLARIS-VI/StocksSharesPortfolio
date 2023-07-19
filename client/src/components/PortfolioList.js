@@ -80,7 +80,7 @@ const PortfolioList = ({ portfolio }) => {
       console.log(chartTemp)
       setChartData(chartTemp)
     }
-  }, [])
+  }, [portfolio])
 
   const options = {
     title: "Ratio of Shares Held"
