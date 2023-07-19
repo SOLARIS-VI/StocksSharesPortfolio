@@ -1,3 +1,4 @@
+// /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/components/PortfolioList.js
 import React, {useState, useEffect} from "react";
 import PortfolioItem from "./PortfolioItem";
 import { Chart } from "react-google-charts";
@@ -6,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 import { faCubesStacked } from "@fortawesome/free-solid-svg-icons";
-
 
 const ListContainer = styled.div`
   margin-top: 10px;
@@ -43,9 +43,6 @@ const BuildingColumns = styled.div`
   margin-left: 34px;
 `;
 
-
-const PortfolioList = ({ portfolio, handleDelete }) => {
-
 const BuildingContainer = styled.div`
   position: absolute;
   left: 54.5%;
@@ -70,11 +67,7 @@ const PortfolioList = ({ portfolio }) => {
   const [chartData, setChartData] = useState([])
 
   const portfolioNodes = portfolio.map((portfolioItem) => (
-    <PortfolioItem
-      key={portfolioItem.id}
-      share={portfolioItem}
-      handleDelete={handleDelete}
-    />
+    <PortfolioItem key={portfolioItem.id} share={portfolioItem} />
   ));
 
   useEffect(() => {
@@ -92,6 +85,7 @@ const PortfolioList = ({ portfolio }) => {
   const options = {
     title: "Ratio of Shares Held"
   }
+
 
 
   return (
