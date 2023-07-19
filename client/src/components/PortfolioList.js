@@ -1,5 +1,5 @@
 // /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/components/PortfolioList.js
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import PortfolioItem from "./PortfolioItem";
 import { Chart } from "react-google-charts";
 import styled from "styled-components";
@@ -56,15 +56,18 @@ const BuildingContainer = styled.div`
 const Stack = styled.div`
   margin-right: 80px;
   @media (max-width: 500px) {
-    
   }
 `;
 
+const Piechart = styled.div`
+justify-content: center;
+display: flex;
+z-index: -1;
+`
 const PortfolioListWrapper = styled(ListContainer)``;
 
 const PortfolioList = ({ portfolio }) => {
-
-  const [chartData, setChartData] = useState([])
+  const [chartData, setChartData] = useState([]);
 
   const portfolioNodes = portfolio.map((portfolioItem) => (
     <PortfolioItem key={portfolioItem.id} share={portfolioItem} />
@@ -72,21 +75,19 @@ const PortfolioList = ({ portfolio }) => {
 
   useEffect(() => {
     if (portfolio.length > 0) {
-      const chartTemp = portfolio.map(x => [
+      const chartTemp = portfolio.map((x) => [
         x.name,
-        parseInt(x.numberOfShares)
-      ])
-      chartTemp.unshift(["Stock", "Number of Shares"])
-      console.log(chartTemp)
-      setChartData(chartTemp)
+        parseInt(x.numberOfShares),
+      ]);
+      chartTemp.unshift(["Stock", "Number of Shares"]);
+      console.log(chartTemp);
+      setChartData(chartTemp);
     }
-  }, [portfolio])
+  }, [portfolio]);
 
   const options = {
-    title: "Ratio of Shares Held"
-  }
-
-
+    title: "Ratio of Shares Held",
+  };
 
   return (
     <>
@@ -107,13 +108,16 @@ const PortfolioList = ({ portfolio }) => {
       <PortfolioListWrapper>
         <ul>{portfolioNodes}</ul>
       </PortfolioListWrapper>
-      <Chart
-        chartType="PieChart"
-        width="600px"
-        height="600px"
-        data={chartData}
-        options={options}
-      />
+
+      <Piechart>
+        <Chart
+          chartType="PieChart"
+          width="600px"
+          height="600px"
+          data={chartData}
+          options={options}
+        />
+      </Piechart>
     </>
   );
 };
