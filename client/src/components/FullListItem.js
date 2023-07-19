@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListItem = styled.li`
   display: flex;
@@ -23,6 +25,14 @@ const ShareName = styled(Link)`
   position: relative;
   text-align: center;
   flex-grow: 1;
+  transition: all 0.5s;
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; */
+
+  &:hover {
+    color: grey;
+    transform: scale(1.5);
+  }
 `;
 
 const SymbolWrapper = styled.div`
@@ -41,28 +51,37 @@ const SymbolText = styled(Link)`
   font-size: 12px;
   font-weight: bold;
   position: relative;
+  transition: all 0.5s;
+  font-family: Tahoma;
+
 
   &:hover {
     color: grey;
+    transform: scale(1.5);
   }
+`;
 
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    background: black;
-    height: 1px;
-    transition: width 0.5s;
+const WatchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  background-color: darkgrey;
+  height: 50px;
+  border-radius: 40px;
+
+  @media (max-width: 500px) {
+    display: none;
   }
+`;
 
-  &:hover:after {
-    background-color: grey;
-    width: 100%;
+const IconContainer = styled.div`
+  position: relative;
+  transition: all 0.5s;
+
+  &:hover {
+    color: black;
+    transform: scale(1.5);
   }
 `;
 
@@ -75,6 +94,13 @@ const FullListItem = ({ share }) => {
         <SymbolText to={`/${share.ticker}`}>{ticker}</SymbolText>
       </SymbolWrapper>
       <ShareName to={`/${share.ticker}`}>{name}</ShareName>
+      <Link to={`/${share.ticker}`}>
+        <WatchWrapper>
+          <IconContainer>
+            <FontAwesomeIcon icon={faEye} style={{ color: "#ffffff" }} />
+          </IconContainer>
+        </WatchWrapper>
+      </Link>
     </ListItem>
   );
 };

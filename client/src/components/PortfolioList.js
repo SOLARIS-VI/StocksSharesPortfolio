@@ -1,10 +1,11 @@
 // /Users/zuhayrkhan/Documents/CodeClan/shares_project/client/src/components/PortfolioList.js
-import React from 'react';
-import PortfolioItem from './PortfolioItem';
-import styled from 'styled-components';
+import React from "react";
+import PortfolioItem from "./PortfolioItem";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
+import { faCubesStacked } from "@fortawesome/free-solid-svg-icons";
 
 const ListContainer = styled.div`
   margin-top: 10px;
@@ -43,16 +44,22 @@ const BuildingColumns = styled.div`
 
 const BuildingContainer = styled.div`
   position: absolute;
-  left: 54%;
+  left: 54.5%;
   transform: translateX(-50%);
 
   @media (max-width: 500px) {
-    left: 59%;
+    left: 41%;
   }
 `;
 
-const PortfolioListWrapper = styled(ListContainer)`
+const Stack = styled.div`
+  margin-right: 70px;
+  @media (max-width: 500px) {
+    
+  }
 `;
+
+const PortfolioListWrapper = styled(ListContainer)``;
 
 const PortfolioList = ({ portfolio }) => {
   const portfolioNodes = portfolio.map((portfolioItem) => (
@@ -62,7 +69,7 @@ const PortfolioList = ({ portfolio }) => {
   return (
     <>
       <Label>
-      <BuildingColumns>
+        <BuildingColumns>
           <FontAwesomeIcon
             icon={faBuildingColumns}
             style={{ color: "#ffffff" }}
@@ -71,6 +78,9 @@ const PortfolioList = ({ portfolio }) => {
         <BuildingContainer>
           <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
         </BuildingContainer>
+        <Stack>
+          <FontAwesomeIcon icon={faCubesStacked} style={{ color: "#ffffff" }} />{" "}
+        </Stack>
       </Label>
       <PortfolioListWrapper>
         <ul>{portfolioNodes}</ul>

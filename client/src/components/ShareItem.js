@@ -37,7 +37,6 @@ const ShareName = styled(Link)`
   flex-grow: 1;
   transition: all 0.5s;
 
-
   &:hover {
     color: grey;
     transform: scale(1.5);

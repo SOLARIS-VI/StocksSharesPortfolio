@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const ListContainer = styled.div`
   margin-top: 10px;
@@ -42,11 +43,18 @@ const BuildingColumns = styled.div`
 
 const BuildingContainer = styled.div`
   position: absolute;
-  left: 54%;
+  left: 49.5%;
   transform: translateX(-50%);
 
   @media (max-width: 500px) {
     left: 59%;
+  }
+`;
+
+const Info = styled.div`
+  margin-right: 48px;
+  @media (max-width: 500px) {
+    display: none;
   }
 `;
 
@@ -63,7 +71,7 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
       setIsSmallScreen(window.innerWidth < 500);
     };
 
-    handleResize(); // Set initial screen width
+    handleResize(); 
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -82,17 +90,23 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
     <>
       <Label>
         <BuildingColumns>
-          <FontAwesomeIcon icon={faBuildingColumns} style={{ color: "#ffffff" }} />
+          <FontAwesomeIcon
+            icon={faBuildingColumns}
+            style={{ color: "#ffffff" }}
+          />
         </BuildingColumns>
         <BuildingContainer>
           <FontAwesomeIcon icon={faBuilding} style={{ color: "#ffffff" }} />
         </BuildingContainer>
+        <Info>
+          <FontAwesomeIcon icon={faCircleInfo} style={{ color: "#ffffff" }} />
+        </Info>
       </Label>
-      {isSmallScreen && <FilterBox onFilter={handleFilter} />} {/* Show FilterBox on small screens */}
+      {isSmallScreen && <FilterBox onFilter={handleFilter} />}{" "}
       <ListContainer>
         <ul>{fullListItems}</ul>
       </ListContainer>
-      {!isSmallScreen && <FilterBox onFilter={handleFilter} />} {/* Show FilterBox on large screens */}
+      {!isSmallScreen && <FilterBox onFilter={handleFilter} />}{" "}
     </>
   );
 };
