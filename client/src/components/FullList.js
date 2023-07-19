@@ -67,6 +67,10 @@ const FullList = ({ fullStocks, setStocks, stocks, setFullStocks }) => {
   ));
 
   useEffect(() => {
+    setFilteredStocks(fullStocks)
+  }, [fullStocks])
+
+  useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 500);
     };
