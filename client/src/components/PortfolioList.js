@@ -1,6 +1,6 @@
-
-import React from "react";
+import React, {useState, useEffect} from "react";
 import PortfolioItem from "./PortfolioItem";
+import { Chart } from "react-google-charts";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
@@ -65,6 +65,9 @@ const Stack = styled.div`
 
 const PortfolioListWrapper = styled(ListContainer)``;
 
+const PortfolioList = ({ portfolio }) => {
+
+  const [chartData, setChartData] = useState([])
 
   const portfolioNodes = portfolio.map((portfolioItem) => (
     <PortfolioItem
@@ -74,7 +77,22 @@ const PortfolioListWrapper = styled(ListContainer)``;
     />
   ));
 
-  
+  useEffect(() => {
+    if (portfolio.length > 0) {
+      const chartTemp = portfolio.map(x => [
+        x.name,
+        parseInt(x.numberOfShares)
+      ])
+      chartTemp.unshift(["Stock", "Number of Shares"])
+      console.log(chartTemp)
+      setChartData(chartTemp)
+    }
+  }, [])
+
+  const options = {
+    title: "Ratio of Shares Held"
+  }
+
 
   return (
     <>
@@ -95,6 +113,13 @@ const PortfolioListWrapper = styled(ListContainer)``;
       <PortfolioListWrapper>
         <ul>{portfolioNodes}</ul>
       </PortfolioListWrapper>
+      <Chart
+        chartType="PieChart"
+        width="600px"
+        height="600px"
+        data={chartData}
+        options={options}
+      />
     </>
   );
 };
