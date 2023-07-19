@@ -8,7 +8,7 @@ import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faListUl } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = styled.nav`
-  background-color: black;
+background-color: black;
   color: #fff;
   flex-direction: column;
   padding: 10px;
@@ -54,7 +54,7 @@ const NavMenuItem = styled.li`
   justify-content: center;
   width: 100%;
   padding-top: 60px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 
   @media (max-width: 500px) {
     margin-bottom: 20px;
