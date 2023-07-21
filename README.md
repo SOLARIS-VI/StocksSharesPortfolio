@@ -28,3 +28,4 @@ i.e.
       fallback: { 
         "querystring": require.resolve("querystring-es3") ,
       },
+# javascript_project
