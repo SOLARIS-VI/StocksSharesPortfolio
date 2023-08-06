@@ -4,6 +4,7 @@
 A local trader has approached our team with a portfolio of shares. They want to be able to analyze it more effectively. They have a small sample dataset to give you and would like you to build a Minimum Viable Product that uses the data to display their portfolio so that they can make better decisions when choosing stocks and shares.
 
 **MVP**
+
 The user should be able to:
 
 1. View total current value.
