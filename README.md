@@ -1,4 +1,4 @@
-# shares_project
+# Shares Portfolio App
 
 In addition to usual installs, follow these steps:
 
@@ -28,4 +28,3 @@ i.e.
       fallback: { 
         "querystring": require.resolve("querystring-es3") ,
       },
-# javascript_project
