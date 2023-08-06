@@ -46,7 +46,8 @@ Then:
 # JavaScript Group Project Guidelines
 
 **Aims:**
-- To gain experience working in a team with other developers - to understand some of the challenges this creates and ways to overcome them.
+- To gain experience working in a team with other developers
+- To understand some of the challenges this creates and ways to overcome them.
 - To have the opportunity to use Agile working methods.
 - To become more confident using Git/GitHub for a multi-person project.
 - To consolidate learning from the JavaScript module.
