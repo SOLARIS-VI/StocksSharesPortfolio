@@ -39,8 +39,8 @@ Then:
 # Technologies Used
 
 - JavaScript
-- Node.js
 - React
+- Node.js
 - Google Charts
 
 # JavaScript Group Project Guidelines
