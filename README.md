@@ -62,25 +62,37 @@ Then:
 
 **Initial Planning:**
 - Learning Goals of Team Members:
-At the start of the project, have a discussion to establish what everyone wants to get out of it. Some people may be more focused on practicing what they’ve already learned, some may be keen to try out something new, some people may have a preference for what area they want to focus on. Find a way of enabling team members to reach their learning goals while ensuring all parts of the application get built.
+  At the start of the project, have a discussion to establish what everyone wants to get out of it. Some people may be more focused on practicing 
+  what they’ve already learned, some may be keen to try out something new, some people may have a preference for what area they want to focus on. 
+  Find a way of enabling team members to reach their learning goals while ensuring all parts of the application get built.
 
 **MVP:**
-- Plan thoroughly so you’re all clear about the aim for the end result. Set out an MVP that doesn't contain any features that are not crucial to the functioning of the application. Split the project into small features to tackle one at a time.
+- Plan thoroughly so you’re all clear about the aim for the end result. Set out an MVP that doesn't contain any features that are not crucial to the 
+  functioning of the application. Split the project into small features to tackle one at a time.
 
 **Setup:**
-- It can work well to set up the basic app, directories, etc., together first so you all understand the core structure before you split up to work on different features. Use git branches and commit and merge regularly.
+- It can work well to set up the basic app, directories, etc., together first so you all understand the core structure before you split up to work 
+  on different features. Use git branches and commit and merge regularly.
 
 **Helpful Hints to Avoid Common Gotchas:**
+APIs:
+- Investigate the APIs you are planning to use and make sure you can get the data back you need into your application before writing code dependent 
+  on that API.
 
-- APIs:
-- Investigate the APIs you are planning to use and make sure you can get the data back you need into your application before writing code dependent on that API.
 - Check for daily/hourly usage limits.
-- When making a request to an API, if you get a CORS error in the console, speak to an instructor and we'll give you notes on making server-side requests, which will solve the problem.
+
+- When making a request to an API, if you get a CORS error in the console, speak to an instructor and we'll give you notes on making server-side 
+  requests, which will solve the problem.
+
 - Don't push your API keys up to GitHub.
 
-- Unknowns:
+Unknowns:
 - Explore your unknowns early.
-- If you are working with a library you haven't used before, or trying to do something you don't know how to do, set time aside early in the week to investigate it.
+
+- If you are working with a library you haven't used before, or trying to do something you don't know how to do,
+  set time aside early in the week to investigate it.
+  
 - Put a time limit on how long you will spend investigating it, and have a plan B ready if you are unable to figure it out.
+
 - Consider investigating features in a separate test project to check you can implement your plan, before integrating it into your main project.
 
