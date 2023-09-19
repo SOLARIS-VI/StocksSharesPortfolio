@@ -20,23 +20,6 @@ The user should be able to:
 3. Add a pie chart to one of the webpages.
 4. Add a candle chart to one of the webpages.
 
-In addition to usual installs, follow these steps:
-
-In terminal:
-- `npm i finnhub`
-- `npm i querystring-es3`
-
-Then:
-
-1. Open `client > node_modules > react-scripts > config > webpack.config.js`
-2. Command-F and search for "fallback"
-3. In "resolve" object, add: fallback:
-
-{
-"querystring": require.resolve("querystring-es3"),
-},
-
-
 # Technologies Used
 
 - JavaScript
@@ -88,14 +71,34 @@ APIs:
 
 - Don't push your API keys up to GitHub.
 
-Unknowns:
-- Explore your unknowns early.
+**How to Run the Project:**
+To run the project locally, follow these steps:
 
-- If you are working with a library you haven't used before, or trying to do something you don't know how to do,
-  set time aside early in the week to investigate it.
-  
-- Put a time limit on how long you will spend investigating it, and have a plan B ready if you are unable to figure it out.
+Installs:
 
-- Consider investigating features in a separate test project to check you can implement your plan,
-  before integrating it into your main project.
+API
+In terminal:
+- npm i finnhub
+- npm i querystring-es3
+
+Then:
+
+1. Open client > node_modules > react-scripts > config > webpack.config.js
+2. Command-F and search for "fallback"
+3. In "resolve" object, add: fallback:
+
+{
+"querystring": require.resolve("querystring-es3"),
+},
+
+Node Modules
+In terminal:
+- npm install
+
+Run Client & Server
+Open two terminals within VScode or chosen IDE:
+cd into the project the cd into client then run npm start 
+Repeat steps for server.
+
+
 
