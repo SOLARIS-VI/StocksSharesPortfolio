@@ -27,29 +27,6 @@ The user should be able to:
 - Node.js
 - Google Charts
 
-# JavaScript Group Project Guidelines
-
-**Aims:**
-- To gain experience working in a team with other developers
-- To understand some of the challenges this creates and ways to overcome them.
-- To have the opportunity to use Agile working methods.
-- To become more confident using Git/GitHub for a multi-person project.
-- To consolidate learning from the JavaScript module.
-- To investigate some JavaScript libraries you haven't used before (learning how to read docs is an invaluable skill).
-
-**Expectations:**
-- All members of the group contributing to the planning, development, and presentation of the project.
-- Members supporting each other to ensure everyone can get the most they can from the week.
-- TDD - unit testing of models where appropriate.
-- Some application of Agile concepts e.g., a morning standup, sprints, a kanban board (Trello).
-- Regular Git commits and use of branches with frequent merges. We are looking to see at least 100 commits.
-
-**Initial Planning:**
-- Learning Goals of Team Members:
-  At the start of the project, have a discussion to establish what everyone wants to get out of it. Some people may be more focused on practicing 
-  what they’ve already learned, some may be keen to try out something new, some people may have a preference for what area they want to focus on. 
-  Find a way of enabling team members to reach their learning goals while ensuring all parts of the application get built.
-
 **MVP:**
 - Plan thoroughly so you’re all clear about the aim for the end result. Set out an MVP that doesn't contain any
   features that are not crucial to the functioning of the application. Split the project into small features to tackle one at a time.
@@ -99,8 +76,8 @@ In terminal:
 Run Client & Server
 Open two terminals within VScode or chosen IDE:
 
-- cd into the project then cd into client then run npm start
-- cd into the project then cd into server then run npm start 
+- cd into the project, then cd into client then run npm start
+- cd into the project, then cd into server then run npm start 
 
 
 
