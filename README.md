@@ -72,6 +72,7 @@ APIs:
 - Don't push your API keys up to GitHub.
 
 **How to Run the Project:**
+
 To run the project locally, follow these steps:
 
 Installs:
