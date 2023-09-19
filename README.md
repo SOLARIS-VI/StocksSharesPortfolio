@@ -98,8 +98,11 @@ In terminal:
 
 Run Client & Server
 Open two terminals within VScode or chosen IDE:
-cd into the project the cd into client then run npm start 
-Repeat steps for server.
+
+- cd into the project then cd into client then run npm start
+- cd into the project then cd into server then run npm start 
+
+
 
 
 
