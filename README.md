@@ -1,4 +1,4 @@
-# Shares Portfolio App
+# Stocks & Shares Portfolio
 
 **BRIEF:**
 
