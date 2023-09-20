@@ -1,6 +1,6 @@
 # Stocks & Shares Portfolio
 
-**BRIEF:**
+**Brief:**
 
 A local trader has approached our team with a portfolio of shares. They want to be able to analyze it more effectively. They have a small sample dataset to give you and would like you to build a Minimum Viable Product that uses the data to display their portfolio so that they can make better decisions when choosing stocks and shares.
 
@@ -13,46 +13,25 @@ The user should be able to:
 3. Retrieve a list of share prices from an external API and allow the user to add shares to her portfolio.
 4. View a chart of the current values in her portfolio.
 
-**EXTENSIONS:**
+**Extensions:**
 
 1. Speculation based on trends and further financial modeling using projections.
 2. Include add and delete buttons for shares.
 3. Add a pie chart to one of the webpages.
 4. Add a candle chart to one of the webpages.
 
-# Technologies Used
+**Technologies Used**
 
 - JavaScript
 - React
 - Node.js
 - Google Charts
 
-**MVP:**
-- Plan thoroughly so you’re all clear about the aim for the end result. Set out an MVP that doesn't contain any
-  features that are not crucial to the functioning of the application. Split the project into small features to tackle one at a time.
-
-**Setup:**
-- It can work well to set up the basic app, directories, etc., together first so you all understand the
-  core structure before you split up to work on different features. Use git branches and commit and merge regularly.
-
-**Helpful Hints to Avoid Common Gotchas:**
-
-APIs:
-- Investigate the APIs you are planning to use and make sure you can get the data back you need
-  into your application before writing code dependent on that API.
-
-- Check for daily/hourly usage limits.
-
-- When making a request to an API, if you get a CORS error in the console, speak to an instructor
-  and we'll give you notes on making server-side requests, which will solve the problem.
-
-- Don't push your API keys up to GitHub.
-
 **How to Run the Project:**
 
 To run the project locally, follow these steps:
 
-Installs:
+Dependencies:
 
 API
 In terminal:
